@@ -10,6 +10,7 @@ namespace YAPCSX2Launcher.Utilities.Emulator
 {
     class PCSX2Utility
     {
+        /* DO WE REALLY NEED ALL THIS???? */
         private string readGameDatabase(string databasePath)
         {
             string dbContents = File.ReadAllText(databasePath);

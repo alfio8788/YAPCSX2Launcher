@@ -73,19 +73,9 @@ namespace YAPCSX2Launcher.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ic_view_list_48px_128 {
+        internal static System.Drawing.Bitmap search_icon {
             get {
-                object obj = ResourceManager.GetObject("ic_view_list_48px-128", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap plainicon_com_39437_256px {
-            get {
-                object obj = ResourceManager.GetObject("plainicon.com-39437-256px", resourceCulture);
+                object obj = ResourceManager.GetObject("search_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -96,6 +86,16 @@ namespace YAPCSX2Launcher.Properties {
         internal static System.Drawing.Bitmap tv {
             get {
                 object obj = ResourceManager.GetObject("tv", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap view_list {
+            get {
+                object obj = ResourceManager.GetObject("view_list", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

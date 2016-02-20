@@ -146,8 +146,8 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::YAPCSX2Launcher.Properties.Resources.plainicon_com_39437_256px;
-            this.pictureBox3.InitialImage = global::YAPCSX2Launcher.Properties.Resources.plainicon_com_39437_256px;
+            this.pictureBox3.Image = global::YAPCSX2Launcher.Properties.Resources.search_icon;
+            this.pictureBox3.InitialImage = global::YAPCSX2Launcher.Properties.Resources.search_icon;
             this.pictureBox3.Location = new System.Drawing.Point(12, 27);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(20, 20);
@@ -157,8 +157,8 @@
             // listViewSwitch
             // 
             this.listViewSwitch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewSwitch.Image = global::YAPCSX2Launcher.Properties.Resources.ic_view_list_48px_128;
-            this.listViewSwitch.InitialImage = global::YAPCSX2Launcher.Properties.Resources.ic_view_list_48px_128;
+            this.listViewSwitch.Image = global::YAPCSX2Launcher.Properties.Resources.view_list;
+            this.listViewSwitch.InitialImage = global::YAPCSX2Launcher.Properties.Resources.view_list;
             this.listViewSwitch.Location = new System.Drawing.Point(905, 1);
             this.listViewSwitch.Name = "listViewSwitch";
             this.listViewSwitch.Size = new System.Drawing.Size(20, 20);

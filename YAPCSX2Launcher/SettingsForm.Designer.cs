@@ -30,7 +30,6 @@
         {
             this.settingsTabControl = new System.Windows.Forms.TabControl();
             this.SettingsTabControlTab2 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.configPopups = new System.Windows.Forms.CheckBox();
             this.configUseNewCompatibilityData = new System.Windows.Forms.CheckBox();
@@ -83,7 +82,6 @@
             // 
             // SettingsTabControlTab2
             // 
-            this.SettingsTabControlTab2.Controls.Add(this.button1);
             this.SettingsTabControlTab2.Controls.Add(this.groupBox4);
             this.SettingsTabControlTab2.Controls.Add(this.groupBox2);
             this.SettingsTabControlTab2.Location = new System.Drawing.Point(4, 22);
@@ -93,13 +91,6 @@
             this.SettingsTabControlTab2.TabIndex = 1;
             this.SettingsTabControlTab2.Text = "YAPCSX2Launcher";
             this.SettingsTabControlTab2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
             // 
             // groupBox4
             // 
@@ -439,6 +430,5 @@
         private System.Windows.Forms.CheckBox configUseNewCompatibilityData;
         private System.Windows.Forms.CheckBox configDownloadExtraGameData;
         private System.Windows.Forms.CheckBox configPopups;
-        private System.Windows.Forms.Button button1;
     }
 }

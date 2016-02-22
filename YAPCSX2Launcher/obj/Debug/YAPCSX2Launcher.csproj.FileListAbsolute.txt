@@ -1,0 +1,13 @@
+C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\bin\Debug\YAPCSX2Launcher.exe.config
+C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\bin\Debug\YAPCSX2Launcher.exe
+C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\bin\Debug\YAPCSX2Launcher.pdb
+C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\obj\Debug\YAPCSX2Launcher.csprojResolveAssemblyReference.cache
+C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\obj\Debug\YAPCSX2Launcher.AboutForm.resources
+C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\obj\Debug\YAPCSX2Launcher.Main.resources
+C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\obj\Debug\YAPCSX2Launcher.Properties.Resources.resources
+C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\obj\Debug\YAPCSX2Launcher.SettingsForm.resources
+C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\obj\Debug\YAPCSX2Launcher.SetupWizardForm.resources
+C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\obj\Debug\YAPCSX2Launcher.SplashForm.resources
+C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\obj\Debug\YAPCSX2Launcher.csproj.GenerateResource.Cache
+C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\obj\Debug\YAPCSX2Launcher.exe
+C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\obj\Debug\YAPCSX2Launcher.pdb

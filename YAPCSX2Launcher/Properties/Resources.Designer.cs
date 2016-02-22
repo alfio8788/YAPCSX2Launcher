@@ -73,6 +73,16 @@ namespace YAPCSX2Launcher.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap grid_view_enabled {
+            get {
+                object obj = ResourceManager.GetObject("grid_view_enabled", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap search_icon {
             get {
                 object obj = ResourceManager.GetObject("search_icon", resourceCulture);
@@ -93,9 +103,19 @@ namespace YAPCSX2Launcher.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap view_list {
+        internal static System.Drawing.Bitmap view_list_enabled {
             get {
-                object obj = ResourceManager.GetObject("view_list", resourceCulture);
+                object obj = ResourceManager.GetObject("view_list_enabled", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap view_list_normal {
+            get {
+                object obj = ResourceManager.GetObject("view_list_normal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

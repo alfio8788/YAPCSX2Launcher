@@ -136,23 +136,20 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\grid_view.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ic_view_list_48px-128.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\plainicon.com-39437-256px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\tv.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grid_view2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\grid_view1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_view_list_48px-1281.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

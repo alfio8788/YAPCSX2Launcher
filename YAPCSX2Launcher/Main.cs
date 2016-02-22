@@ -58,13 +58,18 @@ namespace YAPCSX2Launcher
             gameListGridMode.Items.Add(itm);
         }
 
-        private void settingsToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void exitToolStripMenuItem1_Click_1(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void settingsToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             Form settingsDialog = new SettingsForm();
             settingsDialog.Show();
         }
 
-        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void aboutToolStripMenuItem4_Click(object sender, EventArgs e)
         {
             Form aboutDialog = new AboutForm();
             aboutDialog.Show();

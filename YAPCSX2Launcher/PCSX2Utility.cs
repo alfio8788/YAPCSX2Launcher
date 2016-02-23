@@ -63,5 +63,18 @@ namespace YAPCSX2Launcher.Utilities.Emulator
         {
             return stringToCheck;
         }
+
+        private string isNameField(string stringToCheck)
+        {
+            return stringToCheck;
+        }
+
+        private string getGameDataFromIso(string isoFile)
+        {
+            string fileName = "SYSTEM.CNF";
+            string gameData = null;
+
+            return gameData;
+        }
     }
 }

@@ -39,6 +39,11 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.gameListGridMode = new System.Windows.Forms.ListView();
+            this.listViewGameImage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listViewGameSerial = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listViewGameName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listeViewGameRegion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listViewGameCompatibility = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.searchBox = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.listViewSwitch = new System.Windows.Forms.PictureBox();
@@ -116,13 +121,44 @@
             this.gameListGridMode.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gameListGridMode.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listViewGameImage,
+            this.listViewGameSerial,
+            this.listViewGameName,
+            this.listeViewGameRegion,
+            this.listViewGameCompatibility});
             this.gameListGridMode.Location = new System.Drawing.Point(12, 53);
             this.gameListGridMode.Name = "gameListGridMode";
             this.gameListGridMode.Size = new System.Drawing.Size(965, 481);
             this.gameListGridMode.TabIndex = 4;
             this.gameListGridMode.TileSize = new System.Drawing.Size(2000, 200);
             this.gameListGridMode.UseCompatibleStateImageBehavior = false;
-            this.gameListGridMode.View = System.Windows.Forms.View.List;
+            this.gameListGridMode.View = System.Windows.Forms.View.Details;
+            // 
+            // listViewGameImage
+            // 
+            this.listViewGameImage.Text = "Cover";
+            this.listViewGameImage.Width = 150;
+            // 
+            // listViewGameSerial
+            // 
+            this.listViewGameSerial.Text = "Serial";
+            this.listViewGameSerial.Width = 100;
+            // 
+            // listViewGameName
+            // 
+            this.listViewGameName.Text = "Title";
+            this.listViewGameName.Width = 350;
+            // 
+            // listeViewGameRegion
+            // 
+            this.listeViewGameRegion.Text = "Region";
+            this.listeViewGameRegion.Width = 50;
+            // 
+            // listViewGameCompatibility
+            // 
+            this.listViewGameCompatibility.Text = "Compatibility";
+            this.listViewGameCompatibility.Width = 100;
             // 
             // searchBox
             // 
@@ -174,6 +210,11 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
+            // checkForUpdatesToolStripMenuItem1
+            // 
+            this.checkForUpdatesToolStripMenuItem1.Name = "checkForUpdatesToolStripMenuItem1";
+            this.checkForUpdatesToolStripMenuItem1.Size = new System.Drawing.Size(32, 19);
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -212,7 +253,7 @@
             // settingsToolStripMenuItem2
             // 
             this.settingsToolStripMenuItem2.Name = "settingsToolStripMenuItem2";
-            this.settingsToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.settingsToolStripMenuItem2.Size = new System.Drawing.Size(116, 22);
             this.settingsToolStripMenuItem2.Text = "Settings";
             this.settingsToolStripMenuItem2.Click += new System.EventHandler(this.settingsToolStripMenuItem2_Click);
             // 
@@ -298,6 +339,11 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem donateToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem checkForUpdatesToolStripMenuItem2;
+        private System.Windows.Forms.ColumnHeader listViewGameImage;
+        private System.Windows.Forms.ColumnHeader listViewGameSerial;
+        private System.Windows.Forms.ColumnHeader listViewGameName;
+        private System.Windows.Forms.ColumnHeader listeViewGameRegion;
+        private System.Windows.Forms.ColumnHeader listViewGameCompatibility;
     }
 }
 

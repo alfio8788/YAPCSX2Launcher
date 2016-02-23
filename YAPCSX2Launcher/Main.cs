@@ -35,25 +35,23 @@ namespace YAPCSX2Launcher
                 Form splashScreen = new SplashForm();
                 splashScreen.ShowDialog();
             }*/
-            gameListGridMode.Columns.Add("Serial", 100);
-            gameListGridMode.Columns.Add("Game", 300);
-            gameListGridMode.Columns.Add("Region", 50);
-            gameListGridMode.Columns.Add("Compatibility", 50);
 
             //DEBUG DATA, TO REMOVE ONCE WORKING
-            string[] games = new string[4];
+            string[] games = new string[5];
             ListViewItem itm;
-            games[0] = "SCAJ-20141";
-            games[1] = "Grandia III";
-            games[2] = "JP";
-            games[3] = "5";
+            games[0] = "cover";
+            games[1] = "SCAJ-20141";
+            games[2] = "Grandia III";
+            games[3] = "JP";
+            games[4] = "5";
             itm = new ListViewItem(games);
             gameListGridMode.Items.Add(itm);
-            string[] games2 = new string[4];
-            games2[0] = "SCAJ-99999";
-            games2[1] = "Unknown game";
-            games2[2] = "JP";
-            games2[3] = "0";
+            string[] games2 = new string[5];
+            games2[0] = "cover";
+            games2[1] = "SCAJ-99999";
+            games2[2] = "Unknown game";
+            games2[3] = "JP";
+            games2[4] = "0";
             itm = new ListViewItem(games2);
             gameListGridMode.Items.Add(itm);
         }

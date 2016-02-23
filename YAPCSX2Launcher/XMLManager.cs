@@ -77,5 +77,17 @@ namespace YAPCSX2Launcher.Utilities.XMLManager
             reader.Close();
             return settingsArray;
         }
+
+        public Dictionary<string,string[]> XMLLoadGames(string xmlFile)
+        {
+            //TODO
+            return null; /* C# likes to complain about no returning values */
+        }
+
+        public Dictionary<string,string[]> XMLSaveGames(string xmlFile)
+        {
+            //TODO
+            return null; /* C# likes to complain about no returning values */
+        }
     }
 }

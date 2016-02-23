@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set di attributi. Modificare i valori di questi attributi per modificare le informazioni
 // associate a un assembly.
 [assembly: AssemblyTitle("YAPCSX2Launcher")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Yet Another PCSX2 Launcher")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Tech Penguins")]
 [assembly: AssemblyProduct("YAPCSX2Launcher")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]

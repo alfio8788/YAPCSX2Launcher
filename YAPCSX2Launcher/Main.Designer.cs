@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.aboutToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,11 +60,15 @@
             this.aboutToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.donateToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForUpdatesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editGameMenuEntry = new System.Windows.Forms.ToolStripMenuItem();
+            this.RemoveGameMenuEntry = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listViewSwitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // aboutToolStripMenuItem3
@@ -118,6 +123,7 @@
             // 
             // gameListGridMode
             // 
+            this.gameListGridMode.AllowColumnReorder = true;
             this.gameListGridMode.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -127,9 +133,15 @@
             this.listViewGameName,
             this.listeViewGameRegion,
             this.listViewGameCompatibility});
+            this.gameListGridMode.ContextMenuStrip = this.contextMenuStrip1;
+            this.gameListGridMode.FullRowSelect = true;
+            this.gameListGridMode.HideSelection = false;
+            this.gameListGridMode.LabelWrap = false;
             this.gameListGridMode.Location = new System.Drawing.Point(12, 53);
+            this.gameListGridMode.MultiSelect = false;
             this.gameListGridMode.Name = "gameListGridMode";
             this.gameListGridMode.Size = new System.Drawing.Size(965, 481);
+            this.gameListGridMode.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.gameListGridMode.TabIndex = 4;
             this.gameListGridMode.TileSize = new System.Drawing.Size(2000, 200);
             this.gameListGridMode.UseCompatibleStateImageBehavior = false;
@@ -173,7 +185,6 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::YAPCSX2Launcher.Properties.Resources.search_icon;
             this.pictureBox3.Location = new System.Drawing.Point(12, 27);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(20, 20);
@@ -183,17 +194,16 @@
             // listViewSwitch
             // 
             this.listViewSwitch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewSwitch.Image = global::YAPCSX2Launcher.Properties.Resources.view_list_normal;
             this.listViewSwitch.Location = new System.Drawing.Point(905, 1);
             this.listViewSwitch.Name = "listViewSwitch";
             this.listViewSwitch.Size = new System.Drawing.Size(20, 20);
             this.listViewSwitch.TabIndex = 3;
             this.listViewSwitch.TabStop = false;
+            this.listViewSwitch.Click += new System.EventHandler(this.listViewSwitch_Click);
             // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.Image = global::YAPCSX2Launcher.Properties.Resources.grid_view;
             this.pictureBox2.Location = new System.Drawing.Point(931, 1);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(20, 20);
@@ -203,7 +213,6 @@
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = global::YAPCSX2Launcher.Properties.Resources.tv;
             this.pictureBox1.Location = new System.Drawing.Point(957, 1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(20, 20);
@@ -286,6 +295,28 @@
             this.checkForUpdatesToolStripMenuItem2.Size = new System.Drawing.Size(171, 22);
             this.checkForUpdatesToolStripMenuItem2.Text = "Check for Updates";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editGameMenuEntry,
+            this.RemoveGameMenuEntry});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(152, 48);
+            // 
+            // editGameMenuEntry
+            // 
+            this.editGameMenuEntry.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.editGameMenuEntry.Name = "editGameMenuEntry";
+            this.editGameMenuEntry.Size = new System.Drawing.Size(151, 22);
+            this.editGameMenuEntry.Text = "Edit Game";
+            // 
+            // RemoveGameMenuEntry
+            // 
+            this.RemoveGameMenuEntry.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.RemoveGameMenuEntry.Name = "RemoveGameMenuEntry";
+            this.RemoveGameMenuEntry.Size = new System.Drawing.Size(151, 22);
+            this.RemoveGameMenuEntry.Text = "Remove Game";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -307,6 +338,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -344,6 +376,9 @@
         private System.Windows.Forms.ColumnHeader listViewGameName;
         private System.Windows.Forms.ColumnHeader listeViewGameRegion;
         private System.Windows.Forms.ColumnHeader listViewGameCompatibility;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem editGameMenuEntry;
+        private System.Windows.Forms.ToolStripMenuItem RemoveGameMenuEntry;
     }
 }
 

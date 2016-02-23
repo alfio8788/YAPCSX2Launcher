@@ -142,14 +142,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <None Include="Resources\grid_view2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\grid_view1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ic_view_list_48px-1281.png" />
+    <EmbeddedResource Include="Resources\gamelist.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32;
 using System.IO;
+using System.Reflection;
+using YAPCSX2Launcher.Utilities.Emulator;
 
 //no more need of registry hacks :)
 //Load the ModifyRegistry class
@@ -29,31 +31,30 @@ namespace YAPCSX2Launcher
             {
                 Form wizardForm = new SetupWizardForm();
                 wizardForm.ShowDialog();
-            } //Let's speed things up 
+            } //Let's speed things up for now
             /*else
             {
                 Form splashScreen = new SplashForm();
                 splashScreen.ShowDialog();
             }*/
-
-            //DEBUG DATA, TO REMOVE ONCE WORKING
             string[] games = new string[5];
             ListViewItem itm;
-            games[0] = "cover";
-            games[1] = "SCAJ-20141";
-            games[2] = "Grandia III";
-            games[3] = "JP";
-            games[4] = "5";
-            itm = new ListViewItem(games);
-            gameListGridMode.Items.Add(itm);
-            string[] games2 = new string[5];
-            games2[0] = "cover";
-            games2[1] = "SCAJ-99999";
-            games2[2] = "Unknown game";
-            games2[3] = "JP";
-            games2[4] = "0";
-            itm = new ListViewItem(games2);
-            gameListGridMode.Items.Add(itm);
+            //Cover
+            /*ImageList covers = new ImageList();
+            Assembly cover;
+            cover = Assembly.GetExecutingAssembly();
+            Stream noCoverImage = cover.GetManifestResourceStream("YAPCSX2Launcher.Resources.ps3_no_cover.png");
+            covers.Images.Add(Image.FromStream(noCoverImage));*/
+
+            Dictionary<string, string> gameDbDictionary = PCSX2Utility.gameDb();
+            foreach(KeyValuePair<string,string> kvp in gameDbDictionary)
+            {
+                games[0] = null;
+                games[1] = kvp.Key;
+                games[2] = kvp.Value;
+                itm = new ListViewItem(games);
+                gameListGridMode.Items.Add(itm);
+            }
         }
 
         private void exitToolStripMenuItem1_Click_1(object sender, EventArgs e)
@@ -71,6 +72,15 @@ namespace YAPCSX2Launcher
         {
             Form aboutDialog = new AboutForm();
             aboutDialog.Show();
+        }
+
+        private void listViewSwitch_Click(object sender, EventArgs e)
+        {
+            /* RECOVER FROM ASSEMBLY */
+            Assembly getImage;
+            getImage = Assembly.GetExecutingAssembly();
+            Stream buttonImage = getImage.GetManifestResourceStream("YAPCSX2Launcher.Resources.list_view2.png");
+            listViewSwitch.Image = new Bitmap(buttonImage);
         }
     }
 }

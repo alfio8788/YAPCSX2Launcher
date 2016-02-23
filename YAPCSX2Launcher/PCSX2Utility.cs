@@ -5,76 +5,37 @@ using System.Text;
 using System.Threading.Tasks;
 //Extra libraries for file reading
 using System.IO;
+using System.Reflection;
+using System.Windows.Forms;
 
 namespace YAPCSX2Launcher.Utilities.Emulator
 {
     class PCSX2Utility
     {
-        /* DO WE REALLY NEED ALL THIS???? */
-        private string readGameDatabase(string databasePath)
+        public static Dictionary<string,string> gameDb()
         {
-            string dbContents = File.ReadAllText(databasePath);
-            return dbContents;
-        }
-
-        private string[] filterDatabase(string databasePath)
-        {
-            bool firstLineTrigger = false;
-            string tmpString = null;
-            string[] dbData = new string[100000];
-            string[] filteredDb = new string[100000];
-            dbData = File.ReadAllLines(databasePath);
-            Parallel.For(0, dbData.Length, x =>
+            /* Load db from assembly */
+            Dictionary<string, string> gameDictionary = new Dictionary<string, string>();
+            string line;
+            Assembly gameDb;
+            StreamReader gameDbReader;
+            gameDb = Assembly.GetExecutingAssembly();
+            //DEBUG
+            /*foreach(string abc in gameDb.GetManifestResourceNames())
             {
-                //Useless to keep in memory part of the file that we do not need
-                if(dbData[x] == "-- Game List")
+                if (abc.Contains("gamelist.txt"))
                 {
-                    firstLineTrigger = true;
+                    MessageBox.Show(abc);
                 }
-                //Start the real mess only once the trigger is set....to the end of time
-                if (firstLineTrigger)
-                {
-                    tmpString = lineFilter(dbData[x]);
-                    if (tmpString != null)
-                    {
-                        filteredDb[x] = tmpString;
-                    }
-                }
-            }
-            );
-            return null;
-        }
-
-        private string lineFilter(string stringToFilter)
-        {
-            string returnValue;
-            //Line is a comment, return nothing
-            if(stringToFilter.Remove(2) == "//")
+            }*/
+            
+            gameDbReader = new StreamReader(gameDb.GetManifestResourceStream("YAPCSX2Launcher.Resources.gamelist.txt"));
+            while((line = gameDbReader.ReadLine()) != null)
             {
-                returnValue = null;
-            } else
-            {
-                returnValue = stringToFilter;
+                string[] currentLine = line.Split('\t');
+                gameDictionary.Add(currentLine[0],currentLine[1]);
             }
-            return returnValue;
-        }
-
-        private string isSerialField(string stringToCheck)
-        {
-            return stringToCheck;
-        }
-
-        private string isNameField(string stringToCheck)
-        {
-            return stringToCheck;
-        }
-
-        private string getGameDataFromIso(string isoFile)
-        {
-            string fileName = "SYSTEM.CNF";
-            string gameData = null;
-
-            return gameData;
+            return gameDictionary;
         }
     }
 }

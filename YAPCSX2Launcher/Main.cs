@@ -12,10 +12,6 @@ using System.IO;
 using System.Reflection;
 using YAPCSX2Launcher.Utilities.Emulator;
 
-//no more need of registry hacks :)
-//Load the ModifyRegistry class
-//using Utility.ModifyRegistry;
-
 namespace YAPCSX2Launcher
 {
     public partial class Main : Form
@@ -79,8 +75,46 @@ namespace YAPCSX2Launcher
             /* RECOVER FROM ASSEMBLY */
             Assembly getImage;
             getImage = Assembly.GetExecutingAssembly();
-            Stream buttonImage = getImage.GetManifestResourceStream("YAPCSX2Launcher.Resources.list_view2.png");
+            Stream buttonImage1 = getImage.GetManifestResourceStream("YAPCSX2Launcher.Resources.list_view_e.png");
+            Stream buttonImage2 = getImage.GetManifestResourceStream("YAPCSX2Launcher.Resources.grid_view_n.png");
+            Stream buttonImage3 = getImage.GetManifestResourceStream("YAPCSX2Launcher.Resources.tv_icon_n.png");
+            listViewSwitch.Image = new Bitmap(buttonImage1);
+            pictureBox2.Image = new Bitmap(buttonImage2);
+            pictureBox1.Image = new Bitmap(buttonImage3);
+
+            /* Swap to list view mode */
+            gameListGridMode.View = View.Details;
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            /* RECOVER FROM ASSEMBLY */
+            Assembly getImage;
+            getImage = Assembly.GetExecutingAssembly();
+            Stream buttonImage = getImage.GetManifestResourceStream("YAPCSX2Launcher.Resources.list_view_n.png");
+            Stream buttonImage2 = getImage.GetManifestResourceStream("YAPCSX2Launcher.Resources.grid_view_e.png");
+            Stream buttonImage3 = getImage.GetManifestResourceStream("YAPCSX2Launcher.Resources.tv_icon_n.png");
             listViewSwitch.Image = new Bitmap(buttonImage);
+            pictureBox2.Image = new Bitmap(buttonImage2);
+            pictureBox1.Image = new Bitmap(buttonImage3);
+
+            /* swap to grid view mode */
+            gameListGridMode.View = View.LargeIcon;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            /* RECOVER FROM ASSEMBLY */
+            Assembly getImage;
+            getImage = Assembly.GetExecutingAssembly();
+            Stream buttonImage = getImage.GetManifestResourceStream("YAPCSX2Launcher.Resources.list_view_n.png");
+            Stream buttonImage2 = getImage.GetManifestResourceStream("YAPCSX2Launcher.Resources.grid_view_n.png");
+            Stream buttonImage3 = getImage.GetManifestResourceStream("YAPCSX2Launcher.Resources.tv_icon_e.png");
+            listViewSwitch.Image = new Bitmap(buttonImage);
+            pictureBox2.Image = new Bitmap(buttonImage2);
+            pictureBox1.Image = new Bitmap(buttonImage3);
+
+            /* TODO: FULL SCREEN MODE */
         }
     }
 }

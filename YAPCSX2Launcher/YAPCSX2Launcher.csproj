@@ -142,9 +142,21 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\search_icon.png" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\gamelist.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\grid_view_e.png" />
+    <EmbeddedResource Include="Resources\grid_view_n.png" />
+    <EmbeddedResource Include="Resources\list_view_e.png" />
+    <EmbeddedResource Include="Resources\list_view_n.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\tv_icon_e.png" />
+    <EmbeddedResource Include="Resources\tv_icon_n.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

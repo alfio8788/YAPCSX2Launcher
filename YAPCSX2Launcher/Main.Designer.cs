@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.aboutToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.donateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,11 +46,10 @@
             this.listViewGameName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listeViewGameRegion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listViewGameCompatibility = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editGameMenuEntry = new System.Windows.Forms.ToolStripMenuItem();
+            this.RemoveGameMenuEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.searchBox = new System.Windows.Forms.TextBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.listViewSwitch = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.checkForUpdatesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,15 +60,16 @@
             this.aboutToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.donateToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForUpdatesToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editGameMenuEntry = new System.Windows.Forms.ToolStripMenuItem();
-            this.RemoveGameMenuEntry = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.listViewSwitch = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.contextMenuStrip1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listViewSwitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.menuStrip1.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // aboutToolStripMenuItem3
@@ -172,6 +173,28 @@
             this.listViewGameCompatibility.Text = "Compatibility";
             this.listViewGameCompatibility.Width = 100;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editGameMenuEntry,
+            this.RemoveGameMenuEntry});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(152, 48);
+            // 
+            // editGameMenuEntry
+            // 
+            this.editGameMenuEntry.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.editGameMenuEntry.Name = "editGameMenuEntry";
+            this.editGameMenuEntry.Size = new System.Drawing.Size(151, 22);
+            this.editGameMenuEntry.Text = "Edit Game";
+            // 
+            // RemoveGameMenuEntry
+            // 
+            this.RemoveGameMenuEntry.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.RemoveGameMenuEntry.Name = "RemoveGameMenuEntry";
+            this.RemoveGameMenuEntry.Size = new System.Drawing.Size(151, 22);
+            this.RemoveGameMenuEntry.Text = "Remove Game";
+            // 
             // searchBox
             // 
             this.searchBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -182,42 +205,6 @@
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(939, 20);
             this.searchBox.TabIndex = 5;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Location = new System.Drawing.Point(12, 27);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox3.TabIndex = 6;
-            this.pictureBox3.TabStop = false;
-            // 
-            // listViewSwitch
-            // 
-            this.listViewSwitch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewSwitch.Location = new System.Drawing.Point(905, 1);
-            this.listViewSwitch.Name = "listViewSwitch";
-            this.listViewSwitch.Size = new System.Drawing.Size(20, 20);
-            this.listViewSwitch.TabIndex = 3;
-            this.listViewSwitch.TabStop = false;
-            this.listViewSwitch.Click += new System.EventHandler(this.listViewSwitch_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.Location = new System.Drawing.Point(931, 1);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Location = new System.Drawing.Point(957, 1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // checkForUpdatesToolStripMenuItem1
             // 
@@ -295,27 +282,47 @@
             this.checkForUpdatesToolStripMenuItem2.Size = new System.Drawing.Size(171, 22);
             this.checkForUpdatesToolStripMenuItem2.Text = "Check for Updates";
             // 
-            // contextMenuStrip1
+            // pictureBox3
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editGameMenuEntry,
-            this.RemoveGameMenuEntry});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(152, 48);
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(12, 27);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox3.TabIndex = 6;
+            this.pictureBox3.TabStop = false;
             // 
-            // editGameMenuEntry
+            // listViewSwitch
             // 
-            this.editGameMenuEntry.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.editGameMenuEntry.Name = "editGameMenuEntry";
-            this.editGameMenuEntry.Size = new System.Drawing.Size(151, 22);
-            this.editGameMenuEntry.Text = "Edit Game";
+            this.listViewSwitch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewSwitch.Image = global::YAPCSX2Launcher.Properties.Resources.list_view_n;
+            this.listViewSwitch.Location = new System.Drawing.Point(905, 1);
+            this.listViewSwitch.Name = "listViewSwitch";
+            this.listViewSwitch.Size = new System.Drawing.Size(20, 20);
+            this.listViewSwitch.TabIndex = 3;
+            this.listViewSwitch.TabStop = false;
+            this.listViewSwitch.Click += new System.EventHandler(this.listViewSwitch_Click);
             // 
-            // RemoveGameMenuEntry
+            // pictureBox2
             // 
-            this.RemoveGameMenuEntry.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.RemoveGameMenuEntry.Name = "RemoveGameMenuEntry";
-            this.RemoveGameMenuEntry.Size = new System.Drawing.Size(151, 22);
-            this.RemoveGameMenuEntry.Text = "Remove Game";
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.Image = global::YAPCSX2Launcher.Properties.Resources.grid_view_n;
+            this.pictureBox2.Location = new System.Drawing.Point(931, 1);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = global::YAPCSX2Launcher.Properties.Resources.tv_icon_n;
+            this.pictureBox1.Location = new System.Drawing.Point(957, 1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // Main
             // 
@@ -332,13 +339,13 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
             this.Text = "Form1";
+            this.contextMenuStrip1.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.listViewSwitch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

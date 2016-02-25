@@ -11,3 +11,4 @@ C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\obj\Debug\YAPCSX2L
 C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\obj\Debug\YAPCSX2Launcher.csproj.GenerateResource.Cache
 C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\obj\Debug\YAPCSX2Launcher.exe
 C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\obj\Debug\YAPCSX2Launcher.pdb
+C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\obj\Debug\YAPCSX2Launcher.FullScreenForm.resources

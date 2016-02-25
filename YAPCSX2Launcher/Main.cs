@@ -22,7 +22,7 @@ namespace YAPCSX2Launcher
         {
             InitializeComponent();
             //First Launch? No problem we will solve this with a configuration wizard, else? Simply show the main window
-            string userDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).ToString() + "\\YAPCSX2Launcher\\";
+            string userDataFolder = foldersAndFiles("main");
             //COMMENT THE IF CONDITION TO SHOW THE WIZARD SETUP FOR DEBUG EVEN AFTER THE SOFTWARE ALREADY CREATED IT'S FIRST CONFIG
             if (!Directory.Exists(userDataFolder))
             {
@@ -132,7 +132,7 @@ namespace YAPCSX2Launcher
             /* TODO: FULL SCREEN MODE */
         }
 
-        private static Dictionary<string,string> foldersAndFiles()
+        private static string foldersAndFiles(string dictionaryIndex)
         {
             //Load the main folder too and include it in another variable so we will not have to calculate it every time...
             Dictionary<string, string> folders = new Dictionary<string, string>();
@@ -145,7 +145,7 @@ namespace YAPCSX2Launcher
             folders.Add("gamesfile", userDataFolder + "games.xml");
             folders.Add("cachefolder", userDataFolder + "cache\\");
             folders.Add("languagesfile", userDataFolder + "languages.xml");
-            return folders;
+            return folders[dictionaryIndex];
         }
     }
 }

@@ -163,10 +163,6 @@
             // configDefaultView
             // 
             this.configDefaultView.FormattingEnabled = true;
-            this.configDefaultView.Items.AddRange(new object[] {
-            "List",
-            "Grid",
-            "TV"});
             this.configDefaultView.Location = new System.Drawing.Point(105, 13);
             this.configDefaultView.Name = "configDefaultView";
             this.configDefaultView.Size = new System.Drawing.Size(135, 21);

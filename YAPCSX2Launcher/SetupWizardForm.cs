@@ -27,7 +27,7 @@ namespace YAPCSX2Launcher
         {
             e.Cancel = e.CloseReason == CloseReason.UserClosing;
             //Remove this after debug is done
-            //MessageBox.Show("Please configure YAPCSX2Loader before closing this form");
+            //MessageBox.Show("Please configure YAPCSX2Launcher before closing this form");
         }
 
         private void configPcsx2FolderButton_Click(object sender, EventArgs e)
@@ -79,7 +79,7 @@ namespace YAPCSX2Launcher
             //Gather the data
             string[] mainSettings = new string[3] { configPcsx2Folder.Text, configPcsx2DataFolder.Text, configPcsx2Executable.Text };
             //Get user AppData Folder
-            string userDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).ToString() + "\\YAPCSX2Loader\\";
+            string userDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).ToString() + "\\YAPCSX2Launcher\\";
             //MessageBox.Show(userDataFolder);
             //Directory doesn't exist? Make it...
             if(!Directory.Exists(userDataFolder))

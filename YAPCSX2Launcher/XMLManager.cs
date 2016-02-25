@@ -16,8 +16,10 @@ namespace YAPCSX2Launcher.Utilities.XMLManager
     {
         public void XMLWriteWizzardConfig(string[] xmlValues, string xmlFile)
         {
-            XmlWriter XMLWriter = XmlWriter.Create(xmlFile);
-            XMLWriter.Settings.Indent = true;
+            XmlWriterSettings XMLWriterSettings = new XmlWriterSettings();
+            XMLWriterSettings.Indent = true;
+            XMLWriterSettings.IndentChars = "\t";
+            XmlWriter XMLWriter = XmlWriter.Create(xmlFile, XMLWriterSettings);
             XMLWriter.WriteStartDocument();
             XMLWriter.WriteStartElement("settings");
 
@@ -74,10 +76,13 @@ namespace YAPCSX2Launcher.Utilities.XMLManager
             return;
         }
 
-        public void XMLWriteConfig(Dictionary<string,string> xmlValues)
+        public void XMLWriteConfig(Dictionary<string, string> xmlValues)
         {
-            string configFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).ToString() + "\\YAPCSX2Loader\\config.xml";
-            XmlWriter XMLWriter = XmlWriter.Create(configFile);
+            XmlWriterSettings XMLWriterSettings = new XmlWriterSettings();
+            XMLWriterSettings.Indent = true;
+            XMLWriterSettings.IndentChars = "\t";
+            string configFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).ToString() + "\\YAPCSX2Launcher\\config.xml";
+            XmlWriter XMLWriter = XmlWriter.Create(configFile, XMLWriterSettings);
             XMLWriter.WriteStartDocument();
             XMLWriter.WriteStartElement("settings");
 
@@ -85,16 +90,16 @@ namespace YAPCSX2Launcher.Utilities.XMLManager
             return;
         }
 
-        public Dictionary<string,string> XMLLoadConfig()
+        public Dictionary<string, string> XMLLoadConfig()
         {
-            string configFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).ToString() + "\\YAPCSX2Loader\\config.xml";
+            string configFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).ToString() + "\\YAPCSX2Launcher\\config.xml";
             //Create a 2 dimensions array to fill with the settings
             Dictionary<string, string> settingsArray = new Dictionary<string, string>();
 
             XmlTextReader reader = new XmlTextReader(configFile);
             while (reader.Read())
             {
-                if(reader.NodeType == XmlNodeType.Element && reader.Name == "conf")
+                if (reader.NodeType == XmlNodeType.Element && reader.Name == "conf")
                 {
                     //TODO: as of now settings only have 1 attribute so it's not prone to bug out, but in the future?
                     reader.MoveToNextAttribute();
@@ -107,7 +112,7 @@ namespace YAPCSX2Launcher.Utilities.XMLManager
             return settingsArray;
         }
 
-        public Dictionary<string,string[]> XMLLoadGames(string xmlFile)
+        public Dictionary<string, string[]> XMLLoadGames(string xmlFile)
         {
             //TODO
             return null; /* C# likes to complain about no returning values */
@@ -115,7 +120,10 @@ namespace YAPCSX2Launcher.Utilities.XMLManager
 
         public void XMLSaveGames(string[] gameData, string xmlFile)
         {
-            XmlWriter XMLWriter = XmlWriter.Create(xmlFile);
+            XmlWriterSettings XMLWriterSettings = new XmlWriterSettings();
+            XMLWriterSettings.Indent = true;
+            XMLWriterSettings.IndentChars = "\t";
+            XmlWriter XMLWriter = XmlWriter.Create(xmlFile, XMLWriterSettings);
             XMLWriter.Settings.Indent = true;
             XMLWriter.WriteStartDocument();
             XMLWriter.WriteStartElement("games");
@@ -171,10 +179,6 @@ namespace YAPCSX2Launcher.Utilities.XMLManager
             XMLWriter.Close();
             return;
         }
-
-        private void convertSaveFile(string[] currentSettings)
-        {
-            //TODO
-        }
     }
+
 }

@@ -17,7 +17,7 @@ namespace YAPCSX2Launcher
         {
             InitializeComponent();
             //TODO: Retrieve Settings to populate the form
-            string configFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).ToString() + "\\YAPCSX2Loader\\config.xml";
+            string configFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).ToString() + "\\YAPCSX2Launcher\\config.xml";
             XMLManager settings = new XMLManager();
             Dictionary<string, string> settingsArray = settings.XMLLoadConfig();
         }

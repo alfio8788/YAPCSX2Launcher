@@ -21,9 +21,9 @@ namespace YAPCSX2Launcher
         {
             //DEBUG ONLY, TODO: Make the splash screen actually do cool stuff :)
             Show();
-            splashProgress.Maximum = 10000000;
+            splashProgress.Maximum = 50000000;
             splashProgress.Step = 1;
-            for(int j = 0; j < 10000000; j++)
+            for(int j = 0; j < 5000000; j++)
             {
                 splashProgress.PerformStep();
             }

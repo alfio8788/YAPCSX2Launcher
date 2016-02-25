@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 //Libraries to read and write XML
 using System.Xml;
-using System.IO;
-//Dictionary for settings
+//Might be needed in the future
+//using System.IO;
+//Uncomment for debug (enables messageboxes)
 //using System.Windows.Forms;
 
 namespace YAPCSX2Launcher.Utilities.XMLManager
@@ -36,9 +37,35 @@ namespace YAPCSX2Launcher.Utilities.XMLManager
             XMLWriter.WriteEndElement();
 
             /* Default Settings */
+            /* View Mode */
             XMLWriter.WriteStartElement("conf");
             XMLWriter.WriteAttributeString("name", "viewmode");
-            XMLWriter.WriteString("list"); //values: list || grid
+            XMLWriter.WriteString("list"); //values: list || grid || TV
+            XMLWriter.WriteEndElement();
+            /* Sorting */
+            XMLWriter.WriteStartElement("conf");
+            XMLWriter.WriteAttributeString("name", "sorting");
+            XMLWriter.WriteString("alphabetical"); //values: alphabetical || serial
+            XMLWriter.WriteEndElement();
+            /* Remote info retrieve (DEFAULTS TO FALSE DUE TO POSSIBLE BANS */
+            XMLWriter.WriteStartElement("conf");
+            XMLWriter.WriteAttributeString("name", "remoteinfo");
+            XMLWriter.WriteString("false"); //values: true || false
+            XMLWriter.WriteEndElement();
+            /* Controler support (late implementation) */
+            XMLWriter.WriteStartElement("conf");
+            XMLWriter.WriteAttributeString("name", "controlersupport");
+            XMLWriter.WriteString("false"); //values: true || false
+            XMLWriter.WriteEndElement();
+            /* Controler support ok button */
+            XMLWriter.WriteStartElement("conf");
+            XMLWriter.WriteAttributeString("name", "controlersupportokbutton");
+            XMLWriter.WriteString("1"); //values: button number
+            XMLWriter.WriteEndElement();
+            /* Controller support cancel button */
+            XMLWriter.WriteStartElement("conf");
+            XMLWriter.WriteAttributeString("name", "controllersupportcancelbutton");
+            XMLWriter.WriteString("0"); //values: button number
             XMLWriter.WriteEndElement();
 
             //Complete the writing
@@ -47,9 +74,10 @@ namespace YAPCSX2Launcher.Utilities.XMLManager
             return;
         }
 
-        public void XMLWriteConfig(Dictionary<string,string> xmlValues, string xmlFile)
+        public void XMLWriteConfig(Dictionary<string,string> xmlValues)
         {
-            XmlWriter XMLWriter = XmlWriter.Create(xmlFile);
+            string configFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).ToString() + "\\YAPCSX2Loader\\config.xml";
+            XmlWriter XMLWriter = XmlWriter.Create(configFile);
             XMLWriter.WriteStartDocument();
             XMLWriter.WriteStartElement("settings");
 
@@ -57,12 +85,13 @@ namespace YAPCSX2Launcher.Utilities.XMLManager
             return;
         }
 
-        public Dictionary<string,string> XMLLoadConfig(string xmlFile)
+        public Dictionary<string,string> XMLLoadConfig()
         {
+            string configFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).ToString() + "\\YAPCSX2Loader\\config.xml";
             //Create a 2 dimensions array to fill with the settings
             Dictionary<string, string> settingsArray = new Dictionary<string, string>();
 
-            XmlTextReader reader = new XmlTextReader(xmlFile);
+            XmlTextReader reader = new XmlTextReader(configFile);
             while (reader.Read())
             {
                 if(reader.NodeType == XmlNodeType.Element && reader.Name == "conf")
@@ -73,7 +102,6 @@ namespace YAPCSX2Launcher.Utilities.XMLManager
                     //MessageBox.Show(reader.ReadString());
                     settingsArray.Add(reader.Value, reader.ReadString());
                 }
-                    
             }
             reader.Close();
             return settingsArray;

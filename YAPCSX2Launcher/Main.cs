@@ -11,6 +11,7 @@ using Microsoft.Win32;
 using System.IO;
 using System.Reflection;
 using YAPCSX2Launcher.Utilities.Emulator;
+using YAPCSX2Launcher.Utilities.XMLManager;
 
 namespace YAPCSX2Launcher
 {
@@ -25,6 +26,8 @@ namespace YAPCSX2Launcher
             //COMMENT THE IF CONDITION TO SHOW THE WIZARD SETUP FOR DEBUG EVEN AFTER THE SOFTWARE ALREADY CREATED IT'S FIRST CONFIG
             if (!Directory.Exists(userDataFolder))
             {
+                /* TODO: Fix this messagebox */
+                MessageBox.Show("This is the first time you are running this application, we will now show you a setup wizard to help you configure this application");
                 Form wizardForm = new SetupWizardForm();
                 wizardForm.ShowDialog();
             } //Let's speed things up for now
@@ -33,14 +36,26 @@ namespace YAPCSX2Launcher
                 Form splashScreen = new SplashForm();
                 splashScreen.ShowDialog();
             }*/
+            /* TODO: Load settings */
+            XMLManager settingsLoader = new XMLManager();
+            Dictionary<string, string> settings = settingsLoader.XMLLoadConfig();
+            //Set the side icons to match the settings
+            if(settings["viewmode"].ToLower() == "list")
+            {
+                listViewSwitch_Click(null, null);
+            } else if(settings["viewmode"].ToLower() == "grid")
+            {
+                pictureBox2_Click(null, null);
+            } else if(settings["viewmode"].ToLower() == "tv")
+            {
+                pictureBox1_Click(null, null);
+            } else //Any other value will default to list view to prevent problems
+            {
+                listViewSwitch_Click(null, null);
+            }
+            
             string[] games = new string[5];
             ListViewItem itm;
-            //Cover
-            /*ImageList covers = new ImageList();
-            Assembly cover;
-            cover = Assembly.GetExecutingAssembly();
-            Stream noCoverImage = cover.GetManifestResourceStream("YAPCSX2Launcher.Resources.ps3_no_cover.png");
-            covers.Images.Add(Image.FromStream(noCoverImage));*/
 
             Dictionary<string, string> gameDbDictionary = PCSX2Utility.gameDb();
             foreach(KeyValuePair<string,string> kvp in gameDbDictionary)

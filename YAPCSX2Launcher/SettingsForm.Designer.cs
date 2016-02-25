@@ -113,6 +113,7 @@
             this.configPopups.TabIndex = 2;
             this.configPopups.Text = "Enable Pop Ups (unimplemented)";
             this.configPopups.UseVisualStyleBackColor = true;
+            this.configPopups.Visible = false;
             // 
             // configUseNewCompatibilityData
             // 
@@ -123,6 +124,7 @@
             this.configUseNewCompatibilityData.TabIndex = 1;
             this.configUseNewCompatibilityData.Text = "Use PCSX2\'s Gameindex.dbf for compatibility rating";
             this.configUseNewCompatibilityData.UseVisualStyleBackColor = true;
+            this.configUseNewCompatibilityData.Visible = false;
             // 
             // configDownloadExtraGameData
             // 
@@ -150,6 +152,9 @@
             // configDefaultSorting
             // 
             this.configDefaultSorting.FormattingEnabled = true;
+            this.configDefaultSorting.Items.AddRange(new object[] {
+            "Alphabetical",
+            "Serial"});
             this.configDefaultSorting.Location = new System.Drawing.Point(105, 38);
             this.configDefaultSorting.Name = "configDefaultSorting";
             this.configDefaultSorting.Size = new System.Drawing.Size(135, 21);
@@ -158,6 +163,10 @@
             // configDefaultView
             // 
             this.configDefaultView.FormattingEnabled = true;
+            this.configDefaultView.Items.AddRange(new object[] {
+            "List",
+            "Grid",
+            "TV"});
             this.configDefaultView.Location = new System.Drawing.Point(105, 13);
             this.configDefaultView.Name = "configDefaultView";
             this.configDefaultView.Size = new System.Drawing.Size(135, 21);
@@ -360,6 +369,7 @@
             this.configSaveButton.TabIndex = 1;
             this.configSaveButton.Text = "Save";
             this.configSaveButton.UseVisualStyleBackColor = true;
+            this.configSaveButton.Click += new System.EventHandler(this.configSaveButton_Click);
             // 
             // configCancelButton
             // 

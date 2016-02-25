@@ -45,5 +45,45 @@ namespace YAPCSX2Launcher
             XMLManager configWriter = new XMLManager();
             configWriter.XMLWriteConfig(settingsArray);
         }
+
+        private void configPcsx2FolderButton_Click(object sender, EventArgs e)
+        {
+            string pcsx2FolderPath;
+            FolderBrowserDialog pcsx2Folder = new FolderBrowserDialog();
+            if (pcsx2Folder.ShowDialog() == DialogResult.OK)
+            {
+                pcsx2FolderPath = pcsx2Folder.SelectedPath + "\\";
+                configPcsx2Folder.Text = pcsx2FolderPath;
+                //Check if there is a file called "portable.ini" in the folder, if this is the case set data folder the same as configPcsx2Folder
+                if (File.Exists(pcsx2FolderPath + "portable.ini"))
+                {
+                    //Warn the user that some of the features are not supported if in portable mode
+                    configPcsx2DataFolder.Text = pcsx2FolderPath;
+                    MessageBox.Show("WARNING: Some of the features of this program are not supported in portable mode, you can disable this mode by removing or renaming the file portable.ini in the pcsx2 folder", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+        }
+
+        private void ConfigPcsx2DataFolderButton_Click(object sender, EventArgs e)
+        {
+            string pcsx2DataFolderPath;
+            FolderBrowserDialog pcsx2DataFolder = new FolderBrowserDialog();
+            if (pcsx2DataFolder.ShowDialog() == DialogResult.OK)
+            {
+                pcsx2DataFolderPath = pcsx2DataFolder.SelectedPath;
+                configPcsx2DataFolder.Text = pcsx2DataFolderPath;
+            }
+        }
+
+        private void ConfigPcsx2ExecutableButton_Click(object sender, EventArgs e)
+        {
+            string pcsx2Executable;
+            OpenFileDialog pcsx2ExecutableDialog = new OpenFileDialog();
+            if (pcsx2ExecutableDialog.ShowDialog() == DialogResult.OK)
+            {
+                pcsx2Executable = pcsx2ExecutableDialog.FileName;
+                configPcsx2Executable.Text = pcsx2Executable;
+            }
+        }
     }
 }

@@ -227,6 +227,7 @@
             this.ConfigPcsx2ExecutableButton.TabIndex = 8;
             this.ConfigPcsx2ExecutableButton.Text = "...";
             this.ConfigPcsx2ExecutableButton.UseVisualStyleBackColor = true;
+            this.ConfigPcsx2ExecutableButton.Click += new System.EventHandler(this.ConfigPcsx2ExecutableButton_Click);
             // 
             // ConfigPcsx2DataFolderButton
             // 
@@ -236,6 +237,7 @@
             this.ConfigPcsx2DataFolderButton.TabIndex = 7;
             this.ConfigPcsx2DataFolderButton.Text = "...";
             this.ConfigPcsx2DataFolderButton.UseVisualStyleBackColor = true;
+            this.ConfigPcsx2DataFolderButton.Click += new System.EventHandler(this.ConfigPcsx2DataFolderButton_Click);
             // 
             // configPcsx2FolderButton
             // 
@@ -245,6 +247,7 @@
             this.configPcsx2FolderButton.TabIndex = 6;
             this.configPcsx2FolderButton.Text = "...";
             this.configPcsx2FolderButton.UseVisualStyleBackColor = true;
+            this.configPcsx2FolderButton.Click += new System.EventHandler(this.configPcsx2FolderButton_Click);
             // 
             // configPcsx2Executable
             // 

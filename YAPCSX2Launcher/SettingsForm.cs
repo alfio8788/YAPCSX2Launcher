@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using YAPCSX2Launcher.Utilities.XMLManager;
 using System.IO;
+
 namespace YAPCSX2Launcher
 {
     public partial class SettingsForm : Form
@@ -16,6 +17,7 @@ namespace YAPCSX2Launcher
         public SettingsForm()
         {
             InitializeComponent();
+            /* TODO: set fixed values on the comboboxes outside of here, here it's messy */
             //View Dictionary
             Dictionary<string, string> viewSettingsList = new Dictionary<string, string>();
             viewSettingsList.Add("List", "list");
@@ -30,22 +32,22 @@ namespace YAPCSX2Launcher
             configDefaultSorting.DataSource = new BindingSource(sortingSettingsList, null);
             configDefaultSorting.DisplayMember = "Key";
             configDefaultSorting.ValueMember = "Value";
-            //TODO: Retrieve Settings to populate the form
             XMLManager settings = new XMLManager();
             Dictionary<string, string> settingsArray = settings.XMLLoadConfig();
-            this.configPcsx2Folder.Text = settingsArray["PCSX2Folder"];
-            this.configPcsx2DataFolder.Text = settingsArray["PCSX2DataFolder"];
-            this.configPcsx2Executable.Text = settingsArray["PCSX2Executable"];
-            this.configDownloadExtraGameData.Checked = Convert.ToBoolean(settingsArray["remoteinfo"]);
-            this.configDefaultView.SelectedValue = settingsArray["viewmode"];
-            this.configDefaultSorting.SelectedValue = settingsArray["sorting"];
-            this.configControllerSupport.Checked = Convert.ToBoolean(settingsArray["controlersupport"]);
-            this.configControllerSupportConfirmButton.Text = settingsArray["controlersupportokbutton"];
-            this.configControllerSupportCancelButton.Text = settingsArray["controllersupportcancelbutton"];
+            configPcsx2Folder.Text = settingsArray["PCSX2Folder"];
+            configPcsx2DataFolder.Text = settingsArray["PCSX2DataFolder"];
+            configPcsx2Executable.Text = settingsArray["PCSX2Executable"];
+            configDownloadExtraGameData.Checked = Convert.ToBoolean(settingsArray["remoteinfo"]);
+            configDefaultView.SelectedValue = settingsArray["viewmode"];
+            configDefaultSorting.SelectedValue = settingsArray["sorting"];
+            configControllerSupport.Checked = Convert.ToBoolean(settingsArray["controlersupport"]);
+            configControllerSupportConfirmButton.Text = settingsArray["controlersupportokbutton"];
+            configControllerSupportCancelButton.Text = settingsArray["controllersupportcancelbutton"];
         }
 
         private static string foldersAndFiles(string dictionaryIndex)
         {
+            /* TODO: Move this method in a separate class available to all the others */
             //Load the main folder too and include it in another variable so we will not have to calculate it every time...
             Dictionary<string, string> folders = new Dictionary<string, string>();
             string userDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).ToString() + "\\YAPCSX2Launcher\\";

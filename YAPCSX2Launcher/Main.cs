@@ -36,6 +36,11 @@ namespace YAPCSX2Launcher
                 Form splashScreen = new SplashForm();
                 splashScreen.ShowDialog();
             }*/
+            /* ISO READING TEST */
+            /*string File = "C:\\Users\\alfio\\Desktop\\Bard's Tale, The (USA).iso";
+            string res = PCSX2Utility.ExtractSerial(File);
+            MessageBox.Show(res);*/
+
             /* TODO: Load settings */
             XMLManager settingsLoader = new XMLManager();
             Dictionary<string, string> settings = settingsLoader.XMLLoadConfig();

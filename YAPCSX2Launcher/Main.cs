@@ -12,6 +12,9 @@ using System.IO;
 using System.Reflection;
 using YAPCSX2Launcher.Utilities.Emulator;
 using YAPCSX2Launcher.Utilities.XMLManager;
+//using System.Threading;
+//using System.Reflection;
+//using static YAPCSX2Launcher.SingleInstanceMutex;
 
 namespace YAPCSX2Launcher
 {
@@ -20,7 +23,14 @@ namespace YAPCSX2Launcher
 
         public Main()
         {
-            InitializeComponent();
+            //using (SingleInstanceMutex sim = new SingleInstanceMutex())
+            //{
+            //    if (sim.IsOtherInstanceRunning)
+            //    {
+            //        Application.Exit();
+            //    }
+            //}
+                InitializeComponent();
             //First Launch? No problem we will solve this with a configuration wizard, else? Simply show the main window
             string userDataFolder = foldersAndFiles("main");
             //COMMENT THE IF CONDITION TO SHOW THE WIZARD SETUP FOR DEBUG EVEN AFTER THE SOFTWARE ALREADY CREATED IT'S FIRST CONFIG

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//Assemblies
+using System.IO;
+using System.Reflection;
 
 namespace YAPCSX2Launcher
 {
@@ -37,6 +40,13 @@ namespace YAPCSX2Launcher
         public static string pcsx2GameDataURL()
         {
             return "http://bositman.pcsx2.net/data/data.csv";
+        }
+
+        private static Assembly pcsx2GameData()
+        {
+            //Lets Assume i have network and it is working TODO: Make a network connection check
+
+            return null;
         }
     }
 }

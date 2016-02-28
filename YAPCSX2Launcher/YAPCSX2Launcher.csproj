@@ -96,6 +96,7 @@
     <Compile Include="SetupWizardForm.Designer.cs">
       <DependentUpon>SetupWizardForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SingleInstanceMutex.cs" />
     <Compile Include="SplashForm.cs">
       <SubType>Form</SubType>
     </Compile>

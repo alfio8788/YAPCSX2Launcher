@@ -26,11 +26,10 @@ namespace YAPCSX2Launcher
             //COMMENT THE IF CONDITION TO SHOW THE WIZARD SETUP FOR DEBUG EVEN AFTER THE SOFTWARE ALREADY CREATED IT'S FIRST CONFIG
             if (!Directory.Exists(userDataFolder))
             {
-                /* TODO: Fix this messagebox */
-                MessageBox.Show("This is the first time you are running this application, we will now show you a setup wizard to help you configure this application");
+                MessageBox.Show("This is the first time you are running this application, we will now show you a setup wizard to help you configure this application", "First Launch", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Form wizardForm = new SetupWizardForm();
                 wizardForm.ShowDialog();
-            } //Let's speed things up for now
+            } //Let's speed things up for now TODO: Uncomment when done
             /*else
             {
                 Form splashScreen = new SplashForm();

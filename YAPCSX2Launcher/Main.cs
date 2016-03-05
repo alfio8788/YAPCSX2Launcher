@@ -20,7 +20,6 @@ namespace YAPCSX2Launcher
 {
     public partial class Main : Form
     {
-
         public Main()
         {
             //using (SingleInstanceMutex sim = new SingleInstanceMutex())

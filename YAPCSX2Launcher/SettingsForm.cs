@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using YAPCSX2Launcher.Utilities.XMLManager;
 using System.IO;
+using YAPCSX2Launcher.Utilities.SettingsManager;
 
 namespace YAPCSX2Launcher
 {
@@ -17,73 +17,37 @@ namespace YAPCSX2Launcher
         public SettingsForm()
         {
             InitializeComponent();
-            /* TODO: set fixed values on the comboboxes outside of here, here it's messy */
-            //View Dictionary
-            Dictionary<string, string> viewSettingsList = new Dictionary<string, string>();
-            viewSettingsList.Add("List", "list");
-            viewSettingsList.Add("Grid","grid");
-            viewSettingsList.Add("TV", "tv");
-            configDefaultView.DataSource = new BindingSource(viewSettingsList, null);
-            configDefaultView.DisplayMember = "Key";
-            configDefaultView.ValueMember = "Value";
-            Dictionary<string, string> sortingSettingsList = new Dictionary<string, string>();
-            sortingSettingsList.Add("Alphabetical","alphabetical");
-            sortingSettingsList.Add("Serial","serial");
-            configDefaultSorting.DataSource = new BindingSource(sortingSettingsList, null);
-            configDefaultSorting.DisplayMember = "Key";
-            configDefaultSorting.ValueMember = "Value";
-            XMLManager settings = new XMLManager();
-            Dictionary<string, string> settingsArray = settings.XMLLoadConfig();
-            configPcsx2Folder.Text = settingsArray["PCSX2Folder"];
-            configPcsx2DataFolder.Text = settingsArray["PCSX2DataFolder"];
-            configPcsx2Executable.Text = settingsArray["PCSX2Executable"];
-            configDownloadExtraGameData.Checked = Convert.ToBoolean(settingsArray["remoteinfo"]);
-            configDefaultView.SelectedValue = settingsArray["viewmode"];
-            configDefaultSorting.SelectedValue = settingsArray["sorting"];
-            configControllerSupport.Checked = Convert.ToBoolean(settingsArray["controlersupport"]);
-            configControllerSupportConfirmButton.Text = settingsArray["controlersupportokbutton"];
-            configControllerSupportCancelButton.Text = settingsArray["controllersupportcancelbutton"];
-        }
-
-        private static string foldersAndFiles(string dictionaryIndex)
-        {
-            /* TODO: Move this method in a separate class available to all the others */
-            //Load the main folder too and include it in another variable so we will not have to calculate it every time...
-            Dictionary<string, string> folders = new Dictionary<string, string>();
-            string userDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).ToString() + "\\YAPCSX2Launcher\\";
-            folders.Add("main", userDataFolder);
-            folders.Add("emulatorconfigurationfoler", userDataFolder + "configs\\");
-            folders.Add("configurationfile", userDataFolder + "config.xml");
-            folders.Add("screenshotsfolder", userDataFolder + "screenshots\\");
-            folders.Add("coversfolder", userDataFolder + "covers\\");
-            folders.Add("gamesfile", userDataFolder + "games.xml");
-            folders.Add("cachefolder", userDataFolder + "cache\\");
-            folders.Add("languagesfile", userDataFolder + "languages.xml");
-            return folders[dictionaryIndex];
         }
 
         private void configCancelButton_Click(object sender, EventArgs e)
         {
 
             //TODO: Actually check if anything changed in the form and warn
-            Close();
+            Dispose();
         }
 
         private void configSaveButton_Click(object sender, EventArgs e)
         {
             //Get All the settings
-            Dictionary<string,string> settingsArray = new Dictionary<string, string>();
-            settingsArray["PCSX2Folder"] = configPcsx2Folder.Text;
-            settingsArray["PCSX2DataFolder"] = configPcsx2DataFolder.Text;
-            settingsArray["PCSX2Executable"] = configPcsx2Executable.Text;
-            settingsArray["viewmode"] = configDefaultView.Text.ToLower();
-            settingsArray["sorting"] = configDefaultSorting.Text.ToLower();
-            settingsArray["remoteinfo"] = (configDownloadExtraGameData.Checked) ? true.ToString() : false.ToString();
-            settingsArray["controlersupport"] = (configControllerSupport.Checked) ? true.ToString() : false.ToString();
-            settingsArray["controlersupportokbutton"] = configControllerSupportConfirmButton.Text;
-            settingsArray["controlersupportcancelbutton"] = configControllerSupportCancelButton.Text;
-            XMLManager configWriter = new XMLManager();
-            configWriter.XMLWriteConfig(settingsArray);
+            Configs config = new Configs();
+            config.pcsx2Folder = configPcsx2Folder.Text;
+            config.pcsx2DataFolder = configPcsx2DataFolder.Text;
+            config.pcsx2Executable = configPcsx2Executable.Text;
+            config.viewMode = configDefaultView.SelectedValue.ToString();
+            config.sorting = configDefaultSorting.SelectedValue.ToString();
+            config.remoteInfo = (configDownloadExtraGameData.Checked) ? true : false;
+            config.gamepadSupport = (configControllerSupport.Checked) ? true : false;
+            config.gamepadOkButton = configControllerSupportConfirmButton.Text;
+            config.gamepadCancelButton = configControllerSupportCancelButton.Text;
+            config.ordering = configDefaultOrdering.SelectedValue.ToString();
+            bool result = config.updateSettings(config);
+            if(result)
+            {
+                Dispose();
+            } else
+            {
+                MessageBox.Show("Error: Couldn't save settings!", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void configPcsx2FolderButton_Click(object sender, EventArgs e)
@@ -124,6 +88,51 @@ namespace YAPCSX2Launcher
                 pcsx2Executable = pcsx2ExecutableDialog.FileName;
                 configPcsx2Executable.Text = pcsx2Executable;
             }
+        }
+
+        private void SettingsForm_Load(object sender, EventArgs e)
+        {
+            var sortingValues = new[] {
+                new { Text = "Ascending", Value = "ASC" },
+                new { Text = "Descending", Value = "DESC"}
+            };
+
+            var orderingValues = new[]
+            {
+                new { Text = "Name", Value = "name" },
+                new { Text = "Serial", Value = "serial" },
+                new { Text = "Region", Value = "region" },
+                new { Text = "Compatibility", Value = "compatibility" },
+                new { Text = "Time Played", Value = "timeplayed" }
+            };
+
+            var defaultViewValues = new[] {
+                new { Text= "List", Value = "list" },
+                new { Text= "Grid", Value = "grid" },
+                new { Text= "TV", Value = "tv" }
+            };
+
+            this.configDefaultView.DataSource = defaultViewValues;
+            this.configDefaultView.ValueMember = "Value";
+            this.configDefaultView.DisplayMember = "Text";
+            this.configDefaultSorting.DataSource = sortingValues;
+            this.configDefaultSorting.ValueMember = "Value";
+            this.configDefaultSorting.DisplayMember = "Text";
+            this.configDefaultOrdering.DataSource = orderingValues;
+            this.configDefaultOrdering.ValueMember = "Value";
+            this.configDefaultOrdering.DisplayMember = "Text";
+            //On Load triggers after form opening for some reason: this is bound here till we figure out the problem
+            Configs configs = new Configs().getSettings();
+            configPcsx2Folder.Text = configs.pcsx2Folder;
+            configPcsx2DataFolder.Text = configs.pcsx2DataFolder;
+            configPcsx2Executable.Text = configs.pcsx2Executable;
+            configDownloadExtraGameData.Checked = configs.remoteInfo;
+            configDefaultView.SelectedValue = configs.viewMode;
+            configDefaultSorting.SelectedValue = configs.sorting;
+            configControllerSupport.Checked = configs.gamepadSupport;
+            configControllerSupportConfirmButton.Text = configs.gamepadOkButton;
+            configControllerSupportCancelButton.Text = configs.gamepadCancelButton;
+            configDefaultOrdering.SelectedValue = configs.ordering;
         }
     }
 }

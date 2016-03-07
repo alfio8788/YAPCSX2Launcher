@@ -12,3 +12,11 @@ C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\obj\Debug\YAPCSX2L
 C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\obj\Debug\YAPCSX2Launcher.exe
 C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\obj\Debug\YAPCSX2Launcher.pdb
 C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\obj\Debug\YAPCSX2Launcher.FullScreenForm.resources
+C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\bin\Debug\EntityFramework.dll
+C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\bin\Debug\System.Data.SQLite.dll
+C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\bin\Debug\EntityFramework.xml
+C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\bin\Debug\System.Data.SQLite.xml

@@ -59,6 +59,8 @@
             this.configControllerSupport = new System.Windows.Forms.CheckBox();
             this.configSaveButton = new System.Windows.Forms.Button();
             this.configCancelButton = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.configDefaultOrdering = new System.Windows.Forms.ComboBox();
             this.settingsTabControl.SuspendLayout();
             this.SettingsTabControlTab2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -97,7 +99,7 @@
             this.groupBox4.Controls.Add(this.configPopups);
             this.groupBox4.Controls.Add(this.configUseNewCompatibilityData);
             this.groupBox4.Controls.Add(this.configDownloadExtraGameData);
-            this.groupBox4.Location = new System.Drawing.Point(6, 98);
+            this.groupBox4.Location = new System.Drawing.Point(6, 108);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(696, 96);
             this.groupBox4.TabIndex = 1;
@@ -138,19 +140,22 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.configDefaultOrdering);
+            this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.configDefaultSorting);
             this.groupBox2.Controls.Add(this.configDefaultView);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Location = new System.Drawing.Point(6, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(696, 86);
+            this.groupBox2.Size = new System.Drawing.Size(696, 96);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "General Settings";
             // 
             // configDefaultSorting
             // 
+            this.configDefaultSorting.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.configDefaultSorting.FormattingEnabled = true;
             this.configDefaultSorting.Items.AddRange(new object[] {
             "Alphabetical",
@@ -162,6 +167,7 @@
             // 
             // configDefaultView
             // 
+            this.configDefaultView.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.configDefaultView.FormattingEnabled = true;
             this.configDefaultView.Location = new System.Drawing.Point(105, 13);
             this.configDefaultView.Name = "configDefaultView";
@@ -380,6 +386,27 @@
             this.configCancelButton.UseVisualStyleBackColor = true;
             this.configCancelButton.Click += new System.EventHandler(this.configCancelButton_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 68);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(87, 13);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Default Ordering:";
+            // 
+            // configDefaultOrdering
+            // 
+            this.configDefaultOrdering.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.configDefaultOrdering.FormattingEnabled = true;
+            this.configDefaultOrdering.Items.AddRange(new object[] {
+            "Alphabetical",
+            "Serial"});
+            this.configDefaultOrdering.Location = new System.Drawing.Point(105, 65);
+            this.configDefaultOrdering.Name = "configDefaultOrdering";
+            this.configDefaultOrdering.Size = new System.Drawing.Size(135, 21);
+            this.configDefaultOrdering.TabIndex = 5;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -390,6 +417,7 @@
             this.Controls.Add(this.settingsTabControl);
             this.Name = "SettingsForm";
             this.Text = "SettingsForm";
+            this.Load += new System.EventHandler(this.SettingsForm_Load);
             this.settingsTabControl.ResumeLayout(false);
             this.SettingsTabControlTab2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
@@ -439,5 +467,7 @@
         private System.Windows.Forms.CheckBox configUseNewCompatibilityData;
         private System.Windows.Forms.CheckBox configDownloadExtraGameData;
         private System.Windows.Forms.CheckBox configPopups;
+        private System.Windows.Forms.ComboBox configDefaultOrdering;
+        private System.Windows.Forms.Label label8;
     }
 }

@@ -6,9 +6,12 @@ using System.Drawing;
 //Folder Check Library
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YAPCSX2Launcher.Utilities.SettingsManager;
+using YAPCSX2Launcher.Utilities.SQLManager;
 //XML Class
 using YAPCSX2Launcher.Utilities.XMLManager;
 
@@ -75,22 +78,45 @@ namespace YAPCSX2Launcher
 
         private void configWizardSaveButton_Click(object sender, EventArgs e)
         {
-            string configFile = "config.xml";
-            //Gather the data
-            string[] mainSettings = new string[3] { configPcsx2Folder.Text, configPcsx2DataFolder.Text, configPcsx2Executable.Text };
-            //Get user AppData Folder
-            string userDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).ToString() + "\\YAPCSX2Launcher\\";
-            //MessageBox.Show(userDataFolder);
+            //Directory
+            string directory = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\YAPCSX2Launcher";
+            //dbFile
+            string dbFile = directory  + "\\YAPCSX2Launcher.db3";
+            bool result = false;
             //Directory doesn't exist? Make it...
-            if(!Directory.Exists(userDataFolder))
+            if(!Directory.Exists(directory))
             {
-                Directory.CreateDirectory(userDataFolder);
+                Directory.CreateDirectory(directory);
             }
-            XMLManager xmlUtil = new XMLManager();
-            xmlUtil.XMLWriteWizzardConfig(mainSettings, userDataFolder + configFile);
-            /* TODO: Config write control (errors and that stuff) */
-            MessageBox.Show("Configuration Done");
-            this.Dispose();
+            if (!File.Exists(dbFile))
+            {
+                SQLMngr sqlManager = new SQLMngr();
+                sqlManager.extractDb();
+                Configs settings = new Configs();
+                settings.pcsx2Folder = configPcsx2Folder.Text.ToString();
+                settings.pcsx2DataFolder = configPcsx2DataFolder.Text.ToString();
+                settings.pcsx2Executable = configPcsx2Executable.Text.ToString();
+                settings.viewMode = "list";
+                settings.sorting = "ASC";
+                settings.gamepadSupport = false;
+                settings.gamepadCancelButton = "0";
+                settings.gamepadOkButton = "1";
+                settings.remoteInfo = false;
+                settings.ordering = "name";
+                result = settings.saveSettings(settings);
+                //MessageBox.Show(result.ToString());
+            }
+            if(result)
+            {
+                MessageBox.Show("Configuration Done");
+                this.Dispose();
+            } else //If the saving of the settings failed
+            {
+                File.Delete(dbFile);
+                Directory.Delete(directory);
+                MessageBox.Show("Couldn't save settings, make sure you have write permission in:" + System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
         }
 
         private void showSaveButton(object sender, EventArgs e)

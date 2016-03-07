@@ -92,6 +92,7 @@
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Games.cs" />
     <Compile Include="FullScreenForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +108,7 @@
     <Compile Include="PCSX2Utility.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +128,7 @@
     <Compile Include="SplashForm.Designer.cs">
       <DependentUpon>SplashForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SQLManager.cs" />
     <Compile Include="WebControl.cs" />
     <Compile Include="XMLManager.cs" />
     <EmbeddedResource Include="AboutForm.resx">
@@ -167,6 +170,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Resources\data.csv" />
+    <EmbeddedResource Include="Resources\YAPCSX2Launcher.db3" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

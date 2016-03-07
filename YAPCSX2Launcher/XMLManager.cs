@@ -97,6 +97,7 @@ namespace YAPCSX2Launcher.Utilities.XMLManager
             Dictionary<string, string> settingsArray = new Dictionary<string, string>();
 
             XmlTextReader reader = new XmlTextReader(configFile);
+            //BUGS HERE
             while (reader.Read())
             {
                 if (reader.NodeType == XmlNodeType.Element && reader.Name == "conf")

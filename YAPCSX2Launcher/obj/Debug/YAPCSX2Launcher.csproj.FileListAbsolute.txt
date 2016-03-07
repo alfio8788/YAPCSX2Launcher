@@ -20,3 +20,4 @@ C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\bin\Debug\System.D
 C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\bin\Debug\EntityFramework.xml
 C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\bin\Debug\System.Data.SQLite.xml
+C:\Users\alfio\Documents\GitHub\YAPCSX2Loader\YAPCSX2Launcher\obj\Debug\YAPCSX2Launcher.GameAddForm.resources

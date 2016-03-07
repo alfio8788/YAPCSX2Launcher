@@ -13,7 +13,7 @@ using System.Windows.Forms;
 using YAPCSX2Launcher.Utilities.SettingsManager;
 using YAPCSX2Launcher.Utilities.SQLManager;
 //XML Class
-using YAPCSX2Launcher.Utilities.XMLManager;
+//using YAPCSX2Launcher.Utilities.XMLManager;
 
 namespace YAPCSX2Launcher
 {

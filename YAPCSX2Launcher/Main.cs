@@ -160,8 +160,13 @@ namespace YAPCSX2Launcher
             folders.Add("dbfile", location + "YAPCSX2Launcher.db3");
             folders.Add("emulatorconfigurationfoler", location + "configs\\");
             folders.Add("cachefolder", location + "cache\\");
-            folders.Add("languagesfile", location + "languages.xml");
             return folders[dictionaryIndex];
+        }
+
+        private void addGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form addGameForm = new GameAddForm();
+            addGameForm.ShowDialog();
         }
     }
 }

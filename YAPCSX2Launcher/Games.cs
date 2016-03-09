@@ -28,7 +28,22 @@ namespace YAPCSX2Launcher.Utilities.GamesManager
         public bool addGameToDb(Games gameData)
         {
             SQLMngr sqlManager = new SQLMngr();
-            return sqlManager.addGameToDb(gameData); ;
+            int result = sqlManager.addGameToDb(gameData);
+            if(result >= 1)
+            {
+                GamesConfigs gc = new GamesConfigs();
+                bool result2 = gc.addConfig(gameData.configs);
+                if(result2)
+                {
+                    return true;
+                } else
+                {
+                    return false;
+                }
+            } else
+            {
+                return false;
+            }
         }
 
         public Games getGame(int gameId)

@@ -16,8 +16,7 @@ using YAPCSX2Launcher.Utilities.SQLManager;
 using YAPCSX2Launcher.Utilities.GamesManager;
 using YAPCSX2Launcher.Utilities.SettingsManager;
 //Threading tests
-//using System.Threading;
-//using System.Reflection;
+using System.Threading;
 //using static YAPCSX2Launcher.SingleInstanceMutex;
 
 namespace YAPCSX2Launcher
@@ -26,13 +25,13 @@ namespace YAPCSX2Launcher
     {
         public Main()
         {
-            //using (SingleInstanceMutex sim = new SingleInstanceMutex())
-            //{
-            //    if (sim.IsOtherInstanceRunning)
-            //    {
-            //        Application.Exit();
-            //    }
-            //}
+            /*SingleInstanceMutex sim = new SingleInstanceMutex();
+            if (sim.IsOtherInstanceRunning)
+            {
+                //MessageBox.Show("ERROR: Only one instance of this program can run at once!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //Dispose();
+                Application.Exit();
+            }*/
             InitializeComponent();
             //First Launch? No problem we will solve this with a configuration wizard, else? Simply show the main window
             string dbfile = foldersAndFiles("dbfile");
@@ -53,10 +52,6 @@ namespace YAPCSX2Launcher
             Configs configs = new Configs().getSettings();
             DataTable games = new Games().getGamesCatalogue();
             //MessageBox.Show(games.Rows.Count.ToString());
-            /* ISO READING TEST */
-            /*string File = "C:\\Users\\alfio\\Desktop\\Bard's Tale, The (USA).iso";
-            string res = PCSX2Utility.ExtractSerial(File);
-            MessageBox.Show(res);*/
 
             /* TODO: Set Everything */
             //Set the side icons to match the settings
@@ -165,8 +160,10 @@ namespace YAPCSX2Launcher
 
         private void addGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             Form addGameForm = new GameAddForm();
             addGameForm.ShowDialog();
+            this.Cursor = Cursors.Default;
         }
     }
 }

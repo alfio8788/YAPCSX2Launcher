@@ -14,7 +14,6 @@ namespace YAPCSX2Launcher
     public partial class SingleInstanceMutex
     {
         #region Fields
-
         /// <summary>
         /// Indicator whether another instance of this application is running or not.
         /// </summary>

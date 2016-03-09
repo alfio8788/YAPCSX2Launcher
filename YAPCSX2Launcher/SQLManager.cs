@@ -205,7 +205,7 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
         #endregion
         #region games
         /* Adds a game to the Database */
-        public bool addGameToDb(Games gameData)
+        public int addGameToDb(Games gameData)
         {
             /*
             @serial
@@ -215,7 +215,7 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
             @region
             @cover
             */
-            bool status = true;
+            long lastId = 0;
             this.initConnection();
             this.gameAddQuery.Prepare();
             this.gameAddQuery.Parameters.AddWithValue("@serial", gameData.serial);
@@ -228,14 +228,16 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
             try
             {
                 this.gameAddQuery.ExecuteNonQuery();
+                lastId = this.sqlConnection.LastInsertRowId;
+                //MessageBox.Show(lastId.ToString());
             }
             catch (Exception Ex)
             {
                 MessageBox.Show(Ex.Message);
-                status = false;
+                lastId = 0;
             }
             this.closeConnection();
-            return status;
+            return int.Parse(lastId.ToString());
         }
 
         /* Removes a game from the Database */

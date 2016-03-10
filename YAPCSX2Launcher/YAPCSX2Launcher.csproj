@@ -92,6 +92,12 @@
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AppUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppUpdateForm.Designer.cs">
+      <DependentUpon>AppUpdateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GameAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,9 +141,13 @@
       <DependentUpon>SplashForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SQLManager.cs" />
+    <Compile Include="UpdateManager.cs" />
     <Compile Include="WebControl.cs" />
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppUpdateForm.resx">
+      <DependentUpon>AppUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FullScreenForm.resx">
       <DependentUpon>FullScreenForm.cs</DependentUpon>

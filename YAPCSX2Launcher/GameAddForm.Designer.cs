@@ -30,7 +30,6 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.manualFillCheckBox = new System.Windows.Forms.CheckBox();
             this.gameDataGroupBox = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.coverFindButton = new System.Windows.Forms.Button();
@@ -72,12 +71,11 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(632, 283);
+            this.tabControl1.Size = new System.Drawing.Size(632, 267);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.manualFillCheckBox);
             this.tabPage1.Controls.Add(this.gameDataGroupBox);
             this.tabPage1.Controls.Add(this.buttonLocateFile);
             this.tabPage1.Controls.Add(this.isoFileTextBox);
@@ -85,21 +83,10 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(624, 257);
+            this.tabPage1.Size = new System.Drawing.Size(624, 241);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Game Data";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // manualFillCheckBox
-            // 
-            this.manualFillCheckBox.AutoSize = true;
-            this.manualFillCheckBox.Location = new System.Drawing.Point(9, 32);
-            this.manualFillCheckBox.Name = "manualFillCheckBox";
-            this.manualFillCheckBox.Size = new System.Drawing.Size(154, 17);
-            this.manualFillCheckBox.TabIndex = 5;
-            this.manualFillCheckBox.Text = "Insert Game Data Manually";
-            this.manualFillCheckBox.UseVisualStyleBackColor = true;
-            this.manualFillCheckBox.CheckedChanged += new System.EventHandler(this.manualFillCheckBox_CheckedChanged);
             // 
             // gameDataGroupBox
             // 
@@ -116,7 +103,7 @@
             this.gameDataGroupBox.Controls.Add(this.serialTextBox);
             this.gameDataGroupBox.Controls.Add(this.label2);
             this.gameDataGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gameDataGroupBox.Location = new System.Drawing.Point(6, 55);
+            this.gameDataGroupBox.Location = new System.Drawing.Point(6, 32);
             this.gameDataGroupBox.Name = "gameDataGroupBox";
             this.gameDataGroupBox.Size = new System.Drawing.Size(612, 201);
             this.gameDataGroupBox.TabIndex = 4;
@@ -130,6 +117,7 @@
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(114, 158);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
@@ -205,7 +193,7 @@
             this.regionTextBox.Location = new System.Drawing.Point(114, 80);
             this.regionTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.regionTextBox.Name = "regionTextBox";
-            this.regionTextBox.Size = new System.Drawing.Size(130, 15);
+            this.regionTextBox.Size = new System.Drawing.Size(121, 15);
             this.regionTextBox.TabIndex = 8;
             // 
             // label4
@@ -249,7 +237,7 @@
             this.serialTextBox.Location = new System.Drawing.Point(114, 55);
             this.serialTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.serialTextBox.Name = "serialTextBox";
-            this.serialTextBox.Size = new System.Drawing.Size(130, 15);
+            this.serialTextBox.Size = new System.Drawing.Size(121, 15);
             this.serialTextBox.TabIndex = 4;
             // 
             // label2
@@ -302,7 +290,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(624, 257);
+            this.tabPage2.Size = new System.Drawing.Size(624, 241);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Game Settings";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -376,7 +364,7 @@
             // 
             // gameAddButton
             // 
-            this.gameAddButton.Location = new System.Drawing.Point(566, 295);
+            this.gameAddButton.Location = new System.Drawing.Point(566, 279);
             this.gameAddButton.Name = "gameAddButton";
             this.gameAddButton.Size = new System.Drawing.Size(75, 23);
             this.gameAddButton.TabIndex = 0;
@@ -386,7 +374,7 @@
             // 
             // gameAddCancelButton
             // 
-            this.gameAddCancelButton.Location = new System.Drawing.Point(485, 295);
+            this.gameAddCancelButton.Location = new System.Drawing.Point(485, 279);
             this.gameAddCancelButton.Name = "gameAddCancelButton";
             this.gameAddCancelButton.Size = new System.Drawing.Size(75, 23);
             this.gameAddCancelButton.TabIndex = 1;
@@ -398,13 +386,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(653, 326);
+            this.ClientSize = new System.Drawing.Size(653, 311);
             this.Controls.Add(this.gameAddCancelButton);
             this.Controls.Add(this.gameAddButton);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "GameAddForm";
-            this.Text = "GameAddForm";
+            this.Text = "Add Game";
             this.Load += new System.EventHandler(this.GameAddForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -433,7 +423,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox serialTextBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox manualFillCheckBox;
         private System.Windows.Forms.TextBox regionTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox compatibilityComboBox;

@@ -17,6 +17,7 @@ using YAPCSX2Launcher.Utilities.GamesManager;
 using YAPCSX2Launcher.Utilities.SettingsManager;
 //Threading tests
 using System.Threading;
+using System.Diagnostics;
 //using static YAPCSX2Launcher.SingleInstanceMutex;
 
 namespace YAPCSX2Launcher
@@ -164,6 +165,19 @@ namespace YAPCSX2Launcher
             Form addGameForm = new GameAddForm();
             addGameForm.ShowDialog();
             this.Cursor = Cursors.Default;
+        }
+
+        private void donateToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //TODO: Insert Url and Uncomment
+            //ProcessStartInfo sInfo = new ProcessStartInfo("");
+            //Process.Start(sInfo);
+        }
+
+        private void checkForUpdatesToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Form updateForm = new AppUpdateForm();
+            updateForm.ShowDialog();
         }
     }
 }

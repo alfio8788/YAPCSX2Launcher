@@ -53,6 +53,7 @@
             this.checkForUpdatesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.addGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,7 +65,6 @@
             this.listViewSwitch = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.addGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -233,10 +233,17 @@
             this.fileToolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem1.Text = "File";
             // 
+            // addGameToolStripMenuItem
+            // 
+            this.addGameToolStripMenuItem.Name = "addGameToolStripMenuItem";
+            this.addGameToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.addGameToolStripMenuItem.Text = "&Add Game";
+            this.addGameToolStripMenuItem.Click += new System.EventHandler(this.addGameToolStripMenuItem_Click);
+            // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(130, 22);
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click_1);
             // 
@@ -277,12 +284,14 @@
             this.donateToolStripMenuItem1.Name = "donateToolStripMenuItem1";
             this.donateToolStripMenuItem1.Size = new System.Drawing.Size(171, 22);
             this.donateToolStripMenuItem1.Text = "Donate";
+            this.donateToolStripMenuItem1.Click += new System.EventHandler(this.donateToolStripMenuItem1_Click);
             // 
             // checkForUpdatesToolStripMenuItem2
             // 
             this.checkForUpdatesToolStripMenuItem2.Name = "checkForUpdatesToolStripMenuItem2";
             this.checkForUpdatesToolStripMenuItem2.Size = new System.Drawing.Size(171, 22);
             this.checkForUpdatesToolStripMenuItem2.Text = "Check for Updates";
+            this.checkForUpdatesToolStripMenuItem2.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem2_Click);
             // 
             // pictureBox3
             // 
@@ -325,13 +334,6 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // addGameToolStripMenuItem
-            // 
-            this.addGameToolStripMenuItem.Name = "addGameToolStripMenuItem";
-            this.addGameToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.addGameToolStripMenuItem.Text = "&Add Game";
-            this.addGameToolStripMenuItem.Click += new System.EventHandler(this.addGameToolStripMenuItem_Click);
             // 
             // Main
             // 

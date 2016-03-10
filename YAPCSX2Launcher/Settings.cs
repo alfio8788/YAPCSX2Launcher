@@ -31,6 +31,7 @@ namespace YAPCSX2Launcher.Utilities.SettingsManager
         public string sorting { get; set; }
         public string ordering { get; set; }
         public bool remoteInfo { get; set; }
+        public readonly string[] fields = new[] { "int", "pcsx2Folder", "pcsx2DataFolder", "pcsx2Executable", "viewMode", "gamepadSupport", "gamepadOkButton", "gamepadCancelButton", "sorting", "ordering", "remoteinfo" };
         #endregion
 
         public Configs getSettings()

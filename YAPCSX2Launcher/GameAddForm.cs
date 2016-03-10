@@ -37,19 +37,6 @@ namespace YAPCSX2Launcher
             Dispose();
         }
 
-        private void manualFillCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if(this.manualFillCheckBox.Checked)
-            {
-                this.gameDataGroupBox.Visible = true;
-                this.enableBoxes();
-            } else
-            {
-                this.gameDataGroupBox.Visible = false;
-                this.disableBoxes();
-            }
-        }
-
         private void GameAddForm_Load(object sender, EventArgs e)
         {
             var compatibilityValues = new[]

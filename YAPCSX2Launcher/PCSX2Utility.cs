@@ -11,15 +11,17 @@ using System.Windows.Forms;
 using YAPCSX2Launcher.Utilities.SettingsManager;
 using System.Text.RegularExpressions;
 using System.Net;
-using YAPCSX2Launcher.Utilities.GamesManager;
 
 namespace YAPCSX2Launcher.Utilities.Emulator
 {
     public sealed class Bios
     {
+        #region class definitions
         public string DisplayInfo { get; set; }
         public string Location { get; set; }
         public object Tag { get; set; }
+        public readonly string[] fields = new[] { "DisplayInfo", "Location", "Tag" };
+        #endregion
 
         public List<Bios> getBioses()
         {
@@ -138,6 +140,7 @@ namespace YAPCSX2Launcher.Utilities.Emulator
 
     class GameImageReader
     {
+        #region valid values ranges
         //Accepted serial strings for games
         private static readonly string[] AcceptableSerials = {
             "SCUS", "SLUS", "PCPX",
@@ -154,6 +157,7 @@ namespace YAPCSX2Launcher.Utilities.Emulator
             ".BIN", ".NRG",
             ".IMG"
         };
+        #endregion
 
         public static string ExtractSerial(string file)
         {
@@ -199,10 +203,13 @@ namespace YAPCSX2Launcher.Utilities.Emulator
 
     class AutoGameInfoDb
     {
+        #region class values definitions
         private readonly string url = "http://bositman.pcsx2.net/data/data.csv";
         private readonly string cachedFile = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\YAPCSX2Launcher\\games.csv";
         private bool localFileExists = File.Exists(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\YAPCSX2Launcher\\games.csv") ? true : false;
         private List<GameDbData> dbCache;
+        public readonly string[] fields = new[] { "url", "cachedFile", "localFileExists", "dbCache" };
+        #endregion
 
         public bool updateDbFile()
         {
@@ -286,6 +293,7 @@ namespace YAPCSX2Launcher.Utilities.Emulator
 
     class GameDbData
     {
+        #region class values definitions
         public string serial { get; set; }
         public int compatibility { get; set; }
         public string version { get; set; }
@@ -293,35 +301,7 @@ namespace YAPCSX2Launcher.Utilities.Emulator
         public string dateTested { get; set; }
         public string name { get; set; }
         public string region { get; set; }
-    }
-
-    #region legacy code
-    //class PCSX2Utility
-    //{        
-    //    public static Dictionary<string,string> gameDb()
-    //    {
-    //    /* Load db from assembly */
-    //    Dictionary<string, string> gameDictionary = new Dictionary<string, string>();
-    //        string line;
-    //        Assembly gameDb;
-    //        StreamReader gameDbReader;
-    //        gameDb = Assembly.GetExecutingAssembly();
-    //        //DEBUG
-    //        /*foreach(string abc in gameDb.GetManifestResourceNames())
-    //        {
-    //            if (abc.Contains("gamelist.txt"))
-    //            {
-    //                MessageBox.Show(abc);
-    //            }
-    //        }*/            
-    //        gameDbReader = new StreamReader(gameDb.GetManifestResourceStream("YAPCSX2Launcher.Resources.gamelist.txt"));
-    //        while((line = gameDbReader.ReadLine()) != null)
-    //        {
-    //            string[] currentLine = line.Split('\t');
-    //            gameDictionary.Add(currentLine[0],currentLine[1]);
-    //        }
-    //        return gameDictionary;
-    //    }
-    //}
-    #endregion
+        public readonly string[] fields = new[] { "serial", "compatibility", "version", "hex", "dateTested", "name", "region"};
+        #endregion
+    }    
 }

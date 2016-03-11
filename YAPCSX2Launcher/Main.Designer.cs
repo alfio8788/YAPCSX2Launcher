@@ -40,15 +40,6 @@
             this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.gameListGridMode = new System.Windows.Forms.ListView();
-            this.listViewGameImage = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listViewGameSerial = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listViewGameName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listeViewGameRegion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listViewGameCompatibility = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editGameMenuEntry = new System.Windows.Forms.ToolStripMenuItem();
-            this.RemoveGameMenuEntry = new System.Windows.Forms.ToolStripMenuItem();
             this.searchBox = new System.Windows.Forms.TextBox();
             this.checkForUpdatesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -65,12 +56,21 @@
             this.listViewSwitch = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.contextMenuStrip1.SuspendLayout();
+            this.objectListView1 = new BrightIdeasSoftware.ObjectListView();
+            this.olvColumnCover = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumnSerial = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumnName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumnRegion = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumnCompatibility = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.gameEditMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editGameSubMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listViewSwitch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectListView1)).BeginInit();
+            this.gameEditMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // aboutToolStripMenuItem3
@@ -122,79 +122,6 @@
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
             this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(32, 19);
-            // 
-            // gameListGridMode
-            // 
-            this.gameListGridMode.AllowColumnReorder = true;
-            this.gameListGridMode.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gameListGridMode.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.listViewGameImage,
-            this.listViewGameSerial,
-            this.listViewGameName,
-            this.listeViewGameRegion,
-            this.listViewGameCompatibility});
-            this.gameListGridMode.ContextMenuStrip = this.contextMenuStrip1;
-            this.gameListGridMode.FullRowSelect = true;
-            this.gameListGridMode.HideSelection = false;
-            this.gameListGridMode.LabelWrap = false;
-            this.gameListGridMode.Location = new System.Drawing.Point(12, 53);
-            this.gameListGridMode.MultiSelect = false;
-            this.gameListGridMode.Name = "gameListGridMode";
-            this.gameListGridMode.Size = new System.Drawing.Size(965, 481);
-            this.gameListGridMode.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.gameListGridMode.TabIndex = 4;
-            this.gameListGridMode.TileSize = new System.Drawing.Size(2000, 200);
-            this.gameListGridMode.UseCompatibleStateImageBehavior = false;
-            this.gameListGridMode.View = System.Windows.Forms.View.Details;
-            // 
-            // listViewGameImage
-            // 
-            this.listViewGameImage.Text = "Cover";
-            this.listViewGameImage.Width = 150;
-            // 
-            // listViewGameSerial
-            // 
-            this.listViewGameSerial.Text = "Serial";
-            this.listViewGameSerial.Width = 100;
-            // 
-            // listViewGameName
-            // 
-            this.listViewGameName.Text = "Title";
-            this.listViewGameName.Width = 350;
-            // 
-            // listeViewGameRegion
-            // 
-            this.listeViewGameRegion.Text = "Region";
-            this.listeViewGameRegion.Width = 50;
-            // 
-            // listViewGameCompatibility
-            // 
-            this.listViewGameCompatibility.Text = "Compatibility";
-            this.listViewGameCompatibility.Width = 100;
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editGameMenuEntry,
-            this.RemoveGameMenuEntry});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(152, 48);
-            // 
-            // editGameMenuEntry
-            // 
-            this.editGameMenuEntry.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.editGameMenuEntry.Name = "editGameMenuEntry";
-            this.editGameMenuEntry.Size = new System.Drawing.Size(151, 22);
-            this.editGameMenuEntry.Text = "Edit Game";
-            // 
-            // RemoveGameMenuEntry
-            // 
-            this.RemoveGameMenuEntry.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.RemoveGameMenuEntry.Name = "RemoveGameMenuEntry";
-            this.RemoveGameMenuEntry.Size = new System.Drawing.Size(151, 22);
-            this.RemoveGameMenuEntry.Text = "Remove Game";
             // 
             // searchBox
             // 
@@ -335,14 +262,119 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // objectListView1
+            // 
+            this.objectListView1.AllColumns.Add(this.olvColumnCover);
+            this.objectListView1.AllColumns.Add(this.olvColumnSerial);
+            this.objectListView1.AllColumns.Add(this.olvColumnName);
+            this.objectListView1.AllColumns.Add(this.olvColumnRegion);
+            this.objectListView1.AllColumns.Add(this.olvColumnCompatibility);
+            this.objectListView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.objectListView1.CellEditUseWholeCell = false;
+            this.objectListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.olvColumnCover,
+            this.olvColumnSerial,
+            this.olvColumnName,
+            this.olvColumnRegion,
+            this.olvColumnCompatibility});
+            this.objectListView1.ContextMenuStrip = this.gameEditMenu;
+            this.objectListView1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.objectListView1.FullRowSelect = true;
+            this.objectListView1.HideSelection = false;
+            this.objectListView1.HighlightBackgroundColor = System.Drawing.Color.Empty;
+            this.objectListView1.HighlightForegroundColor = System.Drawing.Color.Empty;
+            this.objectListView1.Location = new System.Drawing.Point(12, 53);
+            this.objectListView1.MultiSelect = false;
+            this.objectListView1.Name = "objectListView1";
+            this.objectListView1.Size = new System.Drawing.Size(965, 481);
+            this.objectListView1.TabIndex = 8;
+            this.objectListView1.UseCompatibleStateImageBehavior = false;
+            this.objectListView1.View = System.Windows.Forms.View.Details;
+            this.objectListView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.objectListView1_MouseClick);
+            // 
+            // olvColumnCover
+            // 
+            this.olvColumnCover.AspectName = "cover";
+            this.olvColumnCover.AutoCompleteEditor = false;
+            this.olvColumnCover.AutoCompleteEditorMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.olvColumnCover.Groupable = false;
+            this.olvColumnCover.Hideable = false;
+            this.olvColumnCover.IsEditable = false;
+            this.olvColumnCover.Searchable = false;
+            this.olvColumnCover.Sortable = false;
+            this.olvColumnCover.Text = "Cover";
+            this.olvColumnCover.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumnCover.Width = 120;
+            // 
+            // olvColumnSerial
+            // 
+            this.olvColumnSerial.AspectName = "serial";
+            this.olvColumnSerial.Groupable = false;
+            this.olvColumnSerial.IsEditable = false;
+            this.olvColumnSerial.Text = "Serial";
+            this.olvColumnSerial.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumnSerial.Width = 90;
+            // 
+            // olvColumnName
+            // 
+            this.olvColumnName.AspectName = "name";
+            this.olvColumnName.FillsFreeSpace = true;
+            this.olvColumnName.Groupable = false;
+            this.olvColumnName.Hideable = false;
+            this.olvColumnName.IsEditable = false;
+            this.olvColumnName.Text = "Name";
+            this.olvColumnName.Width = 250;
+            // 
+            // olvColumnRegion
+            // 
+            this.olvColumnRegion.AspectName = "region";
+            this.olvColumnRegion.Groupable = false;
+            this.olvColumnRegion.Hideable = false;
+            this.olvColumnRegion.IsEditable = false;
+            this.olvColumnRegion.Searchable = false;
+            this.olvColumnRegion.Text = "Region";
+            this.olvColumnRegion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumnRegion.Width = 90;
+            // 
+            // olvColumnCompatibility
+            // 
+            this.olvColumnCompatibility.AspectName = "compatibility";
+            this.olvColumnCompatibility.AutoCompleteEditor = false;
+            this.olvColumnCompatibility.AutoCompleteEditorMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.olvColumnCompatibility.Groupable = false;
+            this.olvColumnCompatibility.HeaderCheckBoxUpdatesRowCheckBoxes = false;
+            this.olvColumnCompatibility.Hideable = false;
+            this.olvColumnCompatibility.IsEditable = false;
+            this.olvColumnCompatibility.Searchable = false;
+            this.olvColumnCompatibility.Text = "Compatibility";
+            this.olvColumnCompatibility.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.olvColumnCompatibility.UseFiltering = false;
+            this.olvColumnCompatibility.Width = 250;
+            // 
+            // gameEditMenu
+            // 
+            this.gameEditMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editGameSubMenu});
+            this.gameEditMenu.Name = "gameEditMenu";
+            this.gameEditMenu.Size = new System.Drawing.Size(129, 26);
+            this.gameEditMenu.Text = "Menu";
+            // 
+            // editGameSubMenu
+            // 
+            this.editGameSubMenu.Name = "editGameSubMenu";
+            this.editGameSubMenu.Size = new System.Drawing.Size(128, 22);
+            this.editGameSubMenu.Text = "&Edit Game";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(989, 546);
+            this.Controls.Add(this.objectListView1);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.searchBox);
-            this.Controls.Add(this.gameListGridMode);
             this.Controls.Add(this.listViewSwitch);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
@@ -350,13 +382,14 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
             this.Text = "YAPCSX2 Launcher";
-            this.contextMenuStrip1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.listViewSwitch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.objectListView1)).EndInit();
+            this.gameEditMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -374,7 +407,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox listViewSwitch;
-        private System.Windows.Forms.ListView gameListGridMode;
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem3;
@@ -389,15 +421,15 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem donateToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem checkForUpdatesToolStripMenuItem2;
-        private System.Windows.Forms.ColumnHeader listViewGameImage;
-        private System.Windows.Forms.ColumnHeader listViewGameSerial;
-        private System.Windows.Forms.ColumnHeader listViewGameName;
-        private System.Windows.Forms.ColumnHeader listeViewGameRegion;
-        private System.Windows.Forms.ColumnHeader listViewGameCompatibility;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem editGameMenuEntry;
-        private System.Windows.Forms.ToolStripMenuItem RemoveGameMenuEntry;
         private System.Windows.Forms.ToolStripMenuItem addGameToolStripMenuItem;
+        private BrightIdeasSoftware.ObjectListView objectListView1;
+        private BrightIdeasSoftware.OLVColumn olvColumnCover;
+        private BrightIdeasSoftware.OLVColumn olvColumnSerial;
+        private BrightIdeasSoftware.OLVColumn olvColumnName;
+        private BrightIdeasSoftware.OLVColumn olvColumnRegion;
+        private BrightIdeasSoftware.OLVColumn olvColumnCompatibility;
+        private System.Windows.Forms.ContextMenuStrip gameEditMenu;
+        private System.Windows.Forms.ToolStripMenuItem editGameSubMenu;
     }
 }
 

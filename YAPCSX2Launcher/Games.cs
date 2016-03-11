@@ -32,6 +32,7 @@ namespace YAPCSX2Launcher.Utilities.GamesManager
             if(result >= 1)
             {
                 GamesConfigs gc = new GamesConfigs();
+                gameData.configs.gameId = result;
                 bool result2 = gc.addConfig(gameData.configs);
                 if(result2)
                 {

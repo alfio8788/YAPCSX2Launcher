@@ -17,12 +17,14 @@ namespace YAPCSX2Launcher
 {
     public partial class GameAddForm : Form
     {
+        #region valid extentions array
         //Accepted Games exts
         private static readonly string[] AcceptableImageFormats = {
             ".ISO", ".MDF",
             ".BIN", ".NRG",
             ".IMG"
         };
+        #endregion
 
         private Configs configs;
 
@@ -39,6 +41,7 @@ namespace YAPCSX2Launcher
 
         private void GameAddForm_Load(object sender, EventArgs e)
         {
+            #region compatibility values array
             var compatibilityValues = new[]
             {
                 new { Text = "1", Value = "1" },
@@ -47,10 +50,10 @@ namespace YAPCSX2Launcher
                 new { Text = "4", Value = "4" },
                 new { Text = "5", Value = "5" }
             };
+            #endregion
             this.compatibilityComboBox.DataSource = compatibilityValues;
             this.compatibilityComboBox.DisplayMember = "Text";
             this.compatibilityComboBox.ValueMember = "Value";
-
 
             Bios biosManager = new Bios();
             List<Bios> bioses = biosManager.getBioses();

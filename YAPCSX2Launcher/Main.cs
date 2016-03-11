@@ -15,9 +15,11 @@ using YAPCSX2Launcher.Utilities.Emulator;
 using YAPCSX2Launcher.Utilities.SQLManager;
 using YAPCSX2Launcher.Utilities.GamesManager;
 using YAPCSX2Launcher.Utilities.SettingsManager;
+using YAPCSX2Launcher.Utilities.MainManager;
 //Threading tests
 using System.Threading;
 using System.Diagnostics;
+using BrightIdeasSoftware;
 //using static YAPCSX2Launcher.SingleInstanceMutex;
 
 namespace YAPCSX2Launcher
@@ -43,7 +45,7 @@ namespace YAPCSX2Launcher
                 MessageBox.Show("This is the first time you are running this application, we will now show you a setup wizard to help you configure this application", "First Launch", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Form wizardForm = new SetupWizardForm();
                 wizardForm.ShowDialog();
-            } //Let's speed things up for now TODO: Uncomment when done
+            } //Let's speed things up for now TODO: Uncomment when done (probably to remove)
             /*else
             {
                 Form splashScreen = new SplashForm();
@@ -53,34 +55,40 @@ namespace YAPCSX2Launcher
             Configs configs = new Configs().getSettings();
             DataTable games = new Games().getGamesCatalogue();
             //MessageBox.Show(games.Rows.Count.ToString());
+            //Get Images
+            Dictionary<int,Image> compatImgs = new ListViewManager().getImageList();
+            this.objectListView1.SetObjects(games.Rows);
+            this.objectListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            //Set compatibility column to load the images
+            this.olvColumnCompatibility.Width = 200;
+            this.olvColumnCompatibility.AspectGetter = delegate (object x)
+            {
+                DataRow strings = (DataRow)x;
+                //MessageBox.Show(strings["compatibility"].ToString());
+                return compatImgs[int.Parse(strings["compatibility"].ToString())];
+            };
+            this.olvColumnCompatibility.Renderer = new ImageRenderer();
+            //this.objectListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.objectListView1.RowHeight = 100;
+            this.olvColumnCover.Renderer = new ImageRenderer();
 
             /* TODO: Set Everything */
             //Set the side icons to match the settings
-            if(configs.viewMode.ToLower() == "list")
+            if (configs.viewMode.ToLower() == "list")
             {
                 listViewSwitch_Click(null, null);
+                this.objectListView1.View = View.Details;
+                //listManager.listViewModeDetailFill(this.gameListGridMode, games);
             }
             else if (configs.viewMode.ToLower() == "grid")
             {
                 pictureBox2_Click(null, null);
+                this.objectListView1.View = View.LargeIcon;
             }
             else if (configs.viewMode.ToLower() == "tv")
             {
                 pictureBox1_Click(null, null);
             }
-
-            /*string[] games = new string[5];
-            ListViewItem itm;
-
-            Dictionary<string, string> gameDbDictionary = PCSX2Utility.gameDb();
-            foreach(KeyValuePair<string,string> kvp in gameDbDictionary)
-            {
-                games[0] = null;
-                games[1] = kvp.Key;
-                games[2] = kvp.Value;
-                itm = new ListViewItem(games);
-                gameListGridMode.Items.Add(itm);
-            }*/
         }
 
         private void exitToolStripMenuItem1_Click_1(object sender, EventArgs e)
@@ -113,7 +121,8 @@ namespace YAPCSX2Launcher
             pictureBox1.Image = new Bitmap(buttonImage3);
 
             /* Swap to list view mode */
-            gameListGridMode.View = View.Details;
+            //gameListGridMode.View = View.Details;
+            this.objectListView1.View = View.Details;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -129,7 +138,8 @@ namespace YAPCSX2Launcher
             pictureBox1.Image = new Bitmap(buttonImage3);
 
             /* swap to grid view mode */
-            gameListGridMode.View = View.LargeIcon;
+            //gameListGridMode.View = View.LargeIcon;
+            this.objectListView1.View = View.LargeIcon;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -178,6 +188,19 @@ namespace YAPCSX2Launcher
         {
             Form updateForm = new AppUpdateForm();
             updateForm.ShowDialog();
+        }
+
+        private void objectListView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                //MessageBox.Show("trigger of right click");
+                if (objectListView1.FocusedItem.Bounds.Contains(e.Location) == true)
+                {
+                    //MessageBox.Show("Selected Item: " + this.objectListView1.SelectedIndex.ToString());
+                    gameEditMenu.Show(Cursor.Position);
+                }
+            }
         }
     }
 }

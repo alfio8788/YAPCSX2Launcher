@@ -108,6 +108,7 @@
     <Compile Include="EditGameForm.Designer.cs">
       <DependentUpon>EditGameForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormatValidityControl.cs" />
     <Compile Include="GameAddForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -118,5 +118,23 @@ namespace YAPCSX2Launcher
                 MessageBox.Show("Error: Couldn't Update Game Data", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void coverFindButton_Click(object sender, EventArgs e)
+        {
+            string imageFile;
+            OpenFileDialog imageFileDialog = new OpenFileDialog();
+            imageFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
+            if (imageFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                //TODO: Check if it's an actual image file or the app will crash
+                imageFile = imageFileDialog.FileName;
+                coverTextBox.Text = imageFile;
+                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+                pictureBox1.Visible = true;
+                FileStream imageBoxFile = new FileStream(imageFile, FileMode.Open);
+                pictureBox1.Image = new Bitmap(imageBoxFile);
+                imageBoxFile.Dispose();
+            }
+        }
     }
 }

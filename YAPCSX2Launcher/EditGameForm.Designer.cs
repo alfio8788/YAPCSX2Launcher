@@ -67,6 +67,7 @@
             this.coverFindButton.TabIndex = 7;
             this.coverFindButton.Text = "...";
             this.coverFindButton.UseVisualStyleBackColor = true;
+            this.coverFindButton.Click += new System.EventHandler(this.coverFindButton_Click);
             // 
             // label6
             // 

@@ -211,5 +211,6 @@ namespace YAPCSX2Launcher
             Form editGameForm = new EditGameForm(int.Parse(selectedRow["id"].ToString()));
             editGameForm.ShowDialog();
         }
+
     }
 }

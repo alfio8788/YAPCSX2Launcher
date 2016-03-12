@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Reflection;
 using YAPCSX2Launcher.Properties;
 using YAPCSX2Launcher.Utilities.Emulator;
 using YAPCSX2Launcher.Utilities.SettingsManager;
 using YAPCSX2Launcher.Utilities.GamesManager;
-using System.IO;
-using System.Reflection;
+using YAPCSX2Launcher.Utilities.Formats;
 
 namespace YAPCSX2Launcher
 {

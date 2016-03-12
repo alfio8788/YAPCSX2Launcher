@@ -59,7 +59,8 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
         private SQLiteCommand updatePlayTimeQuery = new SQLiteCommand("UPDATE games SET timeplayed = timeplayed+@timeplayed WHERE id = @gameid"); //updateGamePlayTime (DONE)
         private SQLiteCommand removeGameQuery = new SQLiteCommand("DELETE FROM games WHERE id = @gameid"); //removeGame (DONE)
         private SQLiteCommand updateGameData = new SQLiteCommand("UPDATE games SET serial = @serial, name = @name, filelocation = @filelocation, compatibility = @compatibility, region = @region, cover = @cover WHERE id = @gameid"); //editGame (DONE)
-        private SQLiteCommand updateCoverQuery = new SQLiteCommand("UPDATE games set cover = @cover WHERE id = @id");//updateGameCover (DONE)
+        private SQLiteCommand updateCoverQuery = new SQLiteCommand("UPDATE games set cover = @cover WHERE id = @id"); //updateGameCover (DONE)
+        private SQLiteCommand getGameQuery = new SQLiteCommand("SELECT * FROM games WHERE id = @id"); //getGame (DONE)
         /* SQLite Queries: screenshots*/
         private SQLiteCommand addScreenshotQuery = new SQLiteCommand("INSERT INTO screenshots (gameid, screenshot) VALUES (@gameid,@screenshot)");//addScreenshot (DONE)
         private SQLiteCommand removeScreenshotQuery = new SQLiteCommand("DELETE FROM screenshots WHERE id = @screenshotid");//removeScreenShot (DONE)
@@ -67,7 +68,7 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
         private SQLiteCommand getScreenshotsQuery = new SQLiteCommand("SELECT * FROM screenshots WHERE gameid = @gameid");//getGameScreenshots (DONE)
         private SQLiteCommand getSingleScreenshotQuery = new SQLiteCommand("SELECT * FROM screenshots WHERE id = @screenshotid");//getSingleScreenshot (DONE)
         /* SQLite Queries: gamesconfigs*/
-        private SQLiteCommand getGameConfigsQuery = new SQLiteCommand("SELECT * FROM gamesconfig WHERE gameid = @gameid");//getGameConfigs (DONE)
+        private SQLiteCommand getGameConfigsQuery = new SQLiteCommand("SELECT * FROM gamesconfigs WHERE gameid = @gameid");//getGameConfigs (DONE)
         private SQLiteCommand removeGameConfigsQuery = new SQLiteCommand("DELETE FROM gamesconfigs WHERE gameid = @gameid");//removeGameConfigs (DONE)
         private SQLiteCommand addGameConfigsQuery = new SQLiteCommand("INSERT INTO gamesconfigs (gameid, configfolder, bios, enableCheats, fromcd, disableHacks, fullboot, nogui) VALUES (@gameid, @configfolder, @bios, @enablecheats, @fromcd, @disablehacks, @fullboot, @nogui)");//addGameConfigs (DONE)
         private SQLiteCommand updateGameConfigsQuery = new SQLiteCommand("UPDATE gamesconfigs SET gameid = @gameid, configfolder = @configfolder, bios = @bios, enablecheats = @enablecheat, fromcd = @fromcd, disablehacks = @disablehacks, fullboot = @fullboot, nogui = @nogui WHERE gameid = @gameid");//updateGameConfigs (DONE)
@@ -204,6 +205,37 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
         }
         #endregion
         #region games
+        /* gets a game from db */
+        public Games getGame(int gameId)
+        {
+            /*
+            @id
+            */
+            this.initConnection();
+            Games game = new Games();
+            this.getGameQuery.Prepare();
+            this.getGameQuery.Parameters.AddWithValue("@id", gameId);
+            this.getGameQuery.Connection = this.sqlConnection;
+            this.sqlDataAdapter = new SQLiteDataAdapter(this.getGameQuery);
+            DataSet gameDataSet = new DataSet();
+            gameDataSet.Reset();
+            DataTable gameDataTable = new DataTable();
+            this.sqlDataAdapter.Fill(gameDataSet);
+            gameDataTable = gameDataSet.Tables[0];
+            //MessageBox.Show(gameConfigsDataTable.Rows.Count.ToString());
+            game.id = int.Parse(gameDataTable.Rows[0]["id"].ToString());
+            game.name = gameDataTable.Rows[0]["name"].ToString();
+            game.serial = gameDataTable.Rows[0]["serial"].ToString();
+            game.location = gameDataTable.Rows[0]["filelocation"].ToString();
+            game.region = gameDataTable.Rows[0]["region"].ToString();
+            game.cover = (byte[])gameDataTable.Rows[0]["cover"];
+            game.compatibility = int.Parse(gameDataTable.Rows[0]["compatibility"].ToString());
+            game.timeplayed = int.Parse(gameDataTable.Rows[0]["timeplayed"].ToString());
+            this.closeConnection();
+            gameDataSet.Dispose();
+            gameDataTable.Dispose();
+            return game;
+        }
         /* Adds a game to the Database */
         public int addGameToDb(Games gameData)
         {
@@ -509,6 +541,7 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
         /* get the configurations for a game from the Database */
         public GamesConfigs getGameConfigs(int gameId)
         {
+            //MessageBox.Show(gameId.ToString());
             /* @gameid */
             GamesConfigs gameConfigs = new GamesConfigs();
             this.initConnection();
@@ -523,6 +556,7 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
             DataTable gameConfigsDataTable = new DataTable();
             this.sqlDataAdapter.Fill(gameConfigsDataSet);
             gameConfigsDataTable = gameConfigsDataSet.Tables[0];
+            //MessageBox.Show(gameConfigsDataTable.Rows.Count.ToString());
             gameConfigs.id = int.Parse(gameConfigsDataTable.Rows[0]["id"].ToString());
             gameConfigs.gameId = int.Parse(gameConfigsDataTable.Rows[0]["gameid"].ToString());
             gameConfigs.configFolder = gameConfigsDataTable.Rows[0]["configfolder"].ToString();

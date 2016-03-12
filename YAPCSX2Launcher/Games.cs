@@ -5,6 +5,7 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 //Load in the SQLite block
 using YAPCSX2Launcher.Utilities.SQLManager;
 
@@ -23,7 +24,8 @@ namespace YAPCSX2Launcher.Utilities.GamesManager
         public string region { get; set; }
         public int timeplayed { get; set; }
         public GamesConfigs configs { get; set; }
-        public Screenshot[] screenshot { get; set; }
+        public List<Screenshot> screenshot { get; set; } /* Screenshot problems expected */
+        public string[] valueFields = new[] { "id", "name", "serial", "compatibility", "location", "cover", "region", "timeplayed", "configs", "screenshot" };
         #endregion
         public bool addGameToDb(Games gameData)
         {
@@ -49,19 +51,11 @@ namespace YAPCSX2Launcher.Utilities.GamesManager
 
         public Games getGame(int gameId)
         {
+            //MessageBox.Show("(From Games.cs) Passed ID: " + gameId.ToString());
             GamesConfigs gc = new GamesConfigs();
             Screenshot ss = new Screenshot();
-            DataTable gameDt = new DataTable();
-            gameDt = getGamesCatalogue();
-            Games game = new Games();
-            game.id = int.Parse(gameDt.Rows[gameId - 1]["id"].ToString());
-            game.name = gameDt.Rows[gameId - 1]["name"].ToString();
-            game.serial = gameDt.Rows[gameId - 1]["serial"].ToString();
-            game.compatibility = int.Parse(gameDt.Rows[gameId - 1]["compatibility"].ToString());
-            game.location = gameDt.Rows[gameId - 1]["filelocation"].ToString();
-            game.cover = (byte[])gameDt.Rows[gameId -1]["cover"];
-            game.region = gameDt.Rows[gameId -1]["region"].ToString();
-            game.timeplayed = int.Parse(gameDt.Rows[gameId - 1]["timeplayed"].ToString());
+            SQLMngr sqlMngr = new SQLMngr();
+            Games game = sqlMngr.getGame(gameId);
             game.configs = gc.getConfig(gameId);
             game.screenshot = ss.getScreenshots(gameId);
             return game;
@@ -77,6 +71,12 @@ namespace YAPCSX2Launcher.Utilities.GamesManager
         {
             SQLMngr sqlManager = new SQLMngr();
             return sqlManager.removeGame(gameId);
+        }
+
+        public bool updateGame(Games gameData)
+        {
+            SQLMngr sqlManager = new SQLMngr();
+            return sqlManager.editGame(gameData);
         }
     }
     #endregion
@@ -99,22 +99,20 @@ namespace YAPCSX2Launcher.Utilities.GamesManager
             return sqlManager.addScreenshot(screenshot);
         }
 
-        public Screenshot[] getScreenshots(int gameId)
+        public List<Screenshot> getScreenshots(int gameId)
         {
+            List<Screenshot> ssList = new List<Screenshot>();
             SQLMngr sqlManager = new SQLMngr();
             DataTable screenshotsDt = sqlManager.getGameScreenshots(gameId);
             int ssNumber = screenshotsDt.Rows.Count;
-            Screenshot[] screenshots = new Screenshot[ssNumber];
-            int count = 0;
             foreach(DataRow row in screenshotsDt.Rows)
             {
                 Screenshot ss = new Screenshot();
                 ss.id = int.Parse(row["id"].ToString());
                 ss.screenshot = (byte[])row["screenshot"];
-                screenshots[count] = ss;
-                count++;
+                ssList.Add(ss);
             }
-            return screenshots;
+            return ssList;
         }
 
         public bool removeAllScreenShotsForGame(int gameId)

@@ -64,6 +64,7 @@
             this.olvColumnCompatibility = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.gameEditMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editGameSubMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.olvColumnId = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listViewSwitch)).BeginInit();
@@ -269,6 +270,7 @@
             this.objectListView1.AllColumns.Add(this.olvColumnName);
             this.objectListView1.AllColumns.Add(this.olvColumnRegion);
             this.objectListView1.AllColumns.Add(this.olvColumnCompatibility);
+            this.objectListView1.AllColumns.Add(this.olvColumnId);
             this.objectListView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -366,6 +368,12 @@
             this.editGameSubMenu.Name = "editGameSubMenu";
             this.editGameSubMenu.Size = new System.Drawing.Size(128, 22);
             this.editGameSubMenu.Text = "&Edit Game";
+            this.editGameSubMenu.Click += new System.EventHandler(this.editGameSubMenu_Click);
+            // 
+            // olvColumnId
+            // 
+            this.olvColumnId.AspectName = "id";
+            this.olvColumnId.IsVisible = false;
             // 
             // Main
             // 
@@ -430,6 +438,7 @@
         private BrightIdeasSoftware.OLVColumn olvColumnCompatibility;
         private System.Windows.Forms.ContextMenuStrip gameEditMenu;
         private System.Windows.Forms.ToolStripMenuItem editGameSubMenu;
+        private BrightIdeasSoftware.OLVColumn olvColumnId;
     }
 }
 

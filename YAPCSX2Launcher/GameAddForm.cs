@@ -12,6 +12,7 @@ using YAPCSX2Launcher.Utilities.Emulator;
 using YAPCSX2Launcher.Utilities.SettingsManager;
 using YAPCSX2Launcher.Utilities.GamesManager;
 using System.IO;
+using System.Reflection;
 
 namespace YAPCSX2Launcher
 {
@@ -170,6 +171,15 @@ namespace YAPCSX2Launcher
                     imageStream.Close();
                     imageBinaryReader.Close();
                 }
+            } else
+            {
+                //Get Cover From assembly
+                Stream gameCoverAssemblyStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("YAPCSX2Launcher.Resources.no_cover.png");
+                var ms = new MemoryStream();
+                gameCoverAssemblyStream.CopyTo(ms);
+                image = ms.ToArray();
+                gameCoverAssemblyStream.Close();
+                ms.Close();
             }
             GamesConfigs gc = new GamesConfigs();
             Games game = new Games();

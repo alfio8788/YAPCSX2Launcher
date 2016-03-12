@@ -202,5 +202,14 @@ namespace YAPCSX2Launcher
                 }
             }
         }
+
+        private void editGameSubMenu_Click(object sender, EventArgs e)
+        {
+            DataRow selectedRow = (DataRow)this.objectListView1.SelectedObject;
+            //MessageBox.Show(selectedRow["id"].ToString());
+
+            Form editGameForm = new EditGameForm(int.Parse(selectedRow["id"].ToString()));
+            editGameForm.ShowDialog();
+        }
     }
 }

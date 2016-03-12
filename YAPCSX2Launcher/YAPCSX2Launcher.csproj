@@ -102,6 +102,12 @@
     <Compile Include="AppUpdateForm.Designer.cs">
       <DependentUpon>AppUpdateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditGameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditGameForm.Designer.cs">
+      <DependentUpon>EditGameForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GameAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AppUpdateForm.resx">
       <DependentUpon>AppUpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditGameForm.resx">
+      <DependentUpon>EditGameForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FullScreenForm.resx">
       <DependentUpon>FullScreenForm.cs</DependentUpon>
@@ -222,6 +231,7 @@
     <EmbeddedResource Include="Resources\tv_icon_n.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\no_cover.png" />
     <EmbeddedResource Include="Resources\0s.png" />
     <EmbeddedResource Include="Resources\1s.png" />
     <EmbeddedResource Include="Resources\2s.png" />

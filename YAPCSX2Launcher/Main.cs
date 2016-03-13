@@ -207,10 +207,17 @@ namespace YAPCSX2Launcher
         {
             DataRow selectedRow = (DataRow)this.objectListView1.SelectedObject;
             //MessageBox.Show(selectedRow["id"].ToString());
-
             Form editGameForm = new EditGameForm(int.Parse(selectedRow["id"].ToString()));
             editGameForm.ShowDialog();
         }
 
+        private void gameConfigurationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+            DataRow selectedRow = (DataRow)this.objectListView1.SelectedObject;
+            Form gameConfigForm = new GameConfigEditForm(int.Parse(selectedRow["id"].ToString()));
+            gameConfigForm.ShowDialog();
+            this.Cursor = Cursors.Default;
+        }
     }
 }

@@ -115,6 +115,12 @@
     <Compile Include="GameAddForm.Designer.cs">
       <DependentUpon>GameAddForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameConfigEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GameConfigEditForm.Designer.cs">
+      <DependentUpon>GameConfigEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Games.cs" />
     <Compile Include="FullScreenForm.cs">
       <SubType>Form</SubType>
@@ -169,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GameAddForm.resx">
       <DependentUpon>GameAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GameConfigEditForm.resx">
+      <DependentUpon>GameConfigEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

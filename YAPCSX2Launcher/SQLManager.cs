@@ -71,7 +71,7 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
         private SQLiteCommand getGameConfigsQuery = new SQLiteCommand("SELECT * FROM gamesconfigs WHERE gameid = @gameid");//getGameConfigs (DONE)
         private SQLiteCommand removeGameConfigsQuery = new SQLiteCommand("DELETE FROM gamesconfigs WHERE gameid = @gameid");//removeGameConfigs (DONE)
         private SQLiteCommand addGameConfigsQuery = new SQLiteCommand("INSERT INTO gamesconfigs (gameid, configfolder, bios, enableCheats, fromcd, disableHacks, fullboot, nogui) VALUES (@gameid, @configfolder, @bios, @enablecheats, @fromcd, @disablehacks, @fullboot, @nogui)");//addGameConfigs (DONE)
-        private SQLiteCommand updateGameConfigsQuery = new SQLiteCommand("UPDATE gamesconfigs SET gameid = @gameid, configfolder = @configfolder, bios = @bios, enablecheats = @enablecheat, fromcd = @fromcd, disablehacks = @disablehacks, fullboot = @fullboot, nogui = @nogui WHERE gameid = @gameid");//updateGameConfigs (DONE)
+        private SQLiteCommand updateGameConfigsQuery = new SQLiteCommand("UPDATE gamesconfigs SET configfolder = @configfolder, bios = @bios, enablecheats = @enablecheats, fromcd = @fromcd, disablehacks = @disablehacks, fullboot = @fullboot, nogui = @nogui WHERE gameid = @gameid");//updateGameConfigs (DONE)
         /* SQLite Queries: Mixed tables Queries */
         //Needed? Probably not as of now
         #endregion
@@ -636,10 +636,9 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
         public bool updateGameConfigs(GamesConfigs configsData)
         {
             /*
-            @gameid
             @configfolder
             @bios
-            @enablecheat
+            @enablecheats
             @fromcd
             @disablehacks
             @fullboot
@@ -649,7 +648,6 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
             bool status = true;
             this.initConnection();
             this.updateGameConfigsQuery.Prepare();
-            this.updateGameConfigsQuery.Parameters.AddWithValue("@gameid", configsData.gameId);
             this.updateGameConfigsQuery.Parameters.AddWithValue("@configfolder", configsData.configFolder);
             this.updateGameConfigsQuery.Parameters.AddWithValue("@bios", configsData.bios);
             this.updateGameConfigsQuery.Parameters.AddWithValue("@enablecheats", configsData.enableCheats.ToString().ToLower());
@@ -657,6 +655,7 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
             this.updateGameConfigsQuery.Parameters.AddWithValue("@disablehacks", configsData.disableHacks.ToString().ToLower());
             this.updateGameConfigsQuery.Parameters.AddWithValue("@fullboot", configsData.fullboot.ToString().ToLower());
             this.updateGameConfigsQuery.Parameters.AddWithValue("@nogui", configsData.nogui.ToString().ToLower());
+            this.updateGameConfigsQuery.Parameters.AddWithValue("@gameid", configsData.gameId);
             this.updateGameConfigsQuery.Connection = this.sqlConnection;
             try
             {

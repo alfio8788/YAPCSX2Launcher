@@ -48,7 +48,6 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
         #region queries
         /* SQLite Queries: general */
         private SQLiteCommand cleanDbQuery = new SQLiteCommand("VACUUM");//optimizeWholeDb (DONE)
-        private SQLiteCommand cleanTableQuery = new SQLiteCommand("VACUUM @tablename");//optimizeDbTable (DONE)
         /* SQLite Queries: settings */
         private SQLiteCommand getSettingsQuery = new SQLiteCommand("SELECT * FROM settings WHERE id = 1"); //getSettings (DONE)
         private SQLiteCommand saveSettingsQuery = new SQLiteCommand("INSERT INTO settings (id, pcsx2folder, pcsx2datafolder, pcsx2executable, viewmode, gamepadsupport, gamepadokbutton, gamepadcancelbutton, sorting, ordering, remoteinfo) VALUES(@id, @pcsx2folder, @pcsx2datafolder, @pcsx2executable, @viewmode, @gamepadsupport, @gamepadokbutton, @gamepadcancelbutton, @sorting, @ordering, @remoteinfo)"); //saveSettings (DONE)
@@ -509,7 +508,7 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
                 status = false;
             }
             //Call a db optimization
-            this.optimizeDbTable("screenshots");
+            this.optimizeDb();
             this.closeConnection();
             return status;
         }
@@ -532,7 +531,7 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
                 status = false;
             }
             //Call a db optimization
-            this.optimizeDbTable("screenshots");
+            this.optimizeDb();
             this.closeConnection();
             return status;
         }
@@ -671,22 +670,17 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
         }
         #endregion
         #region db optimisation
-        private void optimizeDbTable(string tableName)
-        {
-            this.initConnection();
-            this.cleanTableQuery.Prepare();
-            this.cleanTableQuery.Parameters.AddWithValue("@tablename", tableName);
-            this.cleanTableQuery.Connection = this.sqlConnection;
-            this.cleanTableQuery.ExecuteNonQuery();
-            this.closeConnection();
-        }
 
-        private void optimizeWholeDb()
+        private void optimizeDb()
         {
             this.initConnection();
             this.cleanDbQuery.Prepare();
             this.cleanDbQuery.Connection = this.sqlConnection;
-            this.cleanDbQuery.ExecuteNonQuery();
+            try
+            {
+                this.cleanDbQuery.ExecuteNonQuery();
+            } catch (Exception Ex){}
+            
             this.closeConnection();
         }
         #endregion

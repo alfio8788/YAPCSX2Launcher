@@ -219,5 +219,53 @@ namespace YAPCSX2Launcher
             gameConfigForm.ShowDialog();
             this.Cursor = Cursors.Default;
         }
+
+        private void removeGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("Are you sure you want to remove this game from the database?","Warning!",MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            {
+                DataRow selectedRow = (DataRow)this.objectListView1.SelectedObject;
+                //Remove game
+                Games game = new Games();
+                bool result = game.removeGame(int.Parse(selectedRow["id"].ToString()));
+                if(result)
+                {
+                    this.reloadMainList();
+                } else
+                {
+                    MessageBox.Show("Error: Couldn't remove game, try again later","Error!",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        /* game list reload logic */
+        public void listReloadHelper()
+        {
+            this.reloadMainList();
+        }
+
+        private void reloadMainList()
+        {
+            /* Get the settings */
+            Configs configs = new Configs().getSettings();
+            DataTable games = new Games().getGamesCatalogue();
+            //MessageBox.Show(games.Rows.Count.ToString());
+            //Get Images
+            Dictionary<int, Image> compatImgs = new ListViewManager().getImageList();
+            this.objectListView1.SetObjects(games.Rows);
+            this.objectListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            //Set compatibility column to load the images
+            this.olvColumnCompatibility.Width = 200;
+            this.olvColumnCompatibility.AspectGetter = delegate (object x)
+            {
+                DataRow strings = (DataRow)x;
+                //MessageBox.Show(strings["compatibility"].ToString());
+                return compatImgs[int.Parse(strings["compatibility"].ToString())];
+            };
+            this.olvColumnCompatibility.Renderer = new ImageRenderer();
+            //this.objectListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            this.objectListView1.RowHeight = 100;
+            this.olvColumnCover.Renderer = new ImageRenderer();
+        }
     }
 }

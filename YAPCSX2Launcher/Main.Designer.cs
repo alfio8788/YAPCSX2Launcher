@@ -433,6 +433,7 @@
             this.removeGameToolStripMenuItem.Name = "removeGameToolStripMenuItem";
             this.removeGameToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.removeGameToolStripMenuItem.Text = "&Remove Game";
+            this.removeGameToolStripMenuItem.Click += new System.EventHandler(this.removeGameToolStripMenuItem_Click);
             // 
             // Main
             // 

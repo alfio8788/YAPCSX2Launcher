@@ -292,8 +292,8 @@
             this.objectListView1.Cursor = System.Windows.Forms.Cursors.Default;
             this.objectListView1.FullRowSelect = true;
             this.objectListView1.HideSelection = false;
-            this.objectListView1.HighlightBackgroundColor = System.Drawing.Color.Empty;
-            this.objectListView1.HighlightForegroundColor = System.Drawing.Color.Empty;
+            this.objectListView1.SelectedBackColor = System.Drawing.Color.Empty;
+            this.objectListView1.SelectedBackColor = System.Drawing.Color.Empty;
             this.objectListView1.Location = new System.Drawing.Point(12, 53);
             this.objectListView1.MultiSelect = false;
             this.objectListView1.Name = "objectListView1";
@@ -427,6 +427,7 @@
             this.addScreenshotsToolStripMenuItem.Name = "addScreenshotsToolStripMenuItem";
             this.addScreenshotsToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.addScreenshotsToolStripMenuItem.Text = "&Add Screenshot";
+            this.addScreenshotsToolStripMenuItem.Click += new System.EventHandler(this.addScreenshotsToolStripMenuItem_Click);
             // 
             // removeGameToolStripMenuItem
             // 

@@ -96,6 +96,12 @@
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddScreenshotForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddScreenshotForm.Designer.cs">
+      <DependentUpon>AddScreenshotForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AppUpdateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,6 +169,9 @@
     <Compile Include="WebControl.cs" />
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddScreenshotForm.resx">
+      <DependentUpon>AddScreenshotForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AppUpdateForm.resx">
       <DependentUpon>AppUpdateForm.cs</DependentUpon>

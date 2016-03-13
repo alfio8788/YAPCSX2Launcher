@@ -267,5 +267,13 @@ namespace YAPCSX2Launcher
             this.objectListView1.RowHeight = 100;
             this.olvColumnCover.Renderer = new ImageRenderer();
         }
+
+        private void addScreenshotsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataRow selectedRow = (DataRow)this.objectListView1.SelectedObject;
+            int gameId = int.Parse(selectedRow["id"].ToString());
+            Form addScreenshotForm = new AddScreenshotForm(gameId);
+            addScreenshotForm.ShowDialog();
+        }
     }
 }

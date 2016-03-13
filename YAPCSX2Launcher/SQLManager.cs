@@ -423,7 +423,7 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
             this.initConnection();
             this.addScreenshotQuery.Prepare();
             this.addScreenshotQuery.Parameters.AddWithValue("@gameid", screenshotData.gameid);
-            this.addScreenshotQuery.Parameters.AddWithValue("@name", screenshotData.screenshot);
+            this.addScreenshotQuery.Parameters.AddWithValue("@screenshot", screenshotData.screenshot);
             this.addScreenshotQuery.Connection = this.sqlConnection;
             try
             {
@@ -670,7 +670,6 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
         }
         #endregion
         #region db optimisation
-
         private void optimizeDb()
         {
             this.initConnection();

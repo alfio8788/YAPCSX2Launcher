@@ -275,5 +275,23 @@ namespace YAPCSX2Launcher
             Form addScreenshotForm = new AddScreenshotForm(gameId);
             addScreenshotForm.ShowDialog();
         }
+
+        private void viewScreenshotsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataRow selectedRow = (DataRow)this.objectListView1.SelectedObject;
+            int gameId = int.Parse(selectedRow["id"].ToString());
+
+            Form screenshotsForm = new ViewScreenshotsForm(gameId);
+            Screen myScreen = Screen.FromControl(this);
+            Rectangle area = myScreen.WorkingArea;
+            /* Calculate area of the form */
+            float screenWidthMod = (area.Width / 100) * 10;
+            float screenHeightMod = (area.Height / 100) * 20;
+            float formWidth = area.Width - screenWidthMod;
+            float formHeight = area.Height - screenHeightMod;
+            Size size = new Size(int.Parse(Math.Round(formWidth, 0).ToString()), int.Parse(Math.Round(formHeight, 0).ToString()));
+            screenshotsForm.Size = size;
+            screenshotsForm.ShowDialog();
+        }
     }
 }

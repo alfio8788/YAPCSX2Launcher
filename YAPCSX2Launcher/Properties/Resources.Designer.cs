@@ -63,6 +63,16 @@ namespace YAPCSX2Launcher.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap close_image {
+            get {
+                object obj = ResourceManager.GetObject("close_image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap grid_view_e {
             get {
                 object obj = ResourceManager.GetObject("grid_view_e", resourceCulture);

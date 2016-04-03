@@ -166,6 +166,12 @@
     </Compile>
     <Compile Include="SQLManager.cs" />
     <Compile Include="UpdateManager.cs" />
+    <Compile Include="ViewScreenshotsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewScreenshotsForm.Designer.cs">
+      <DependentUpon>ViewScreenshotsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WebControl.cs" />
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
@@ -209,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SplashForm.resx">
       <DependentUpon>SplashForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewScreenshotsForm.resx">
+      <DependentUpon>ViewScreenshotsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -259,6 +268,7 @@
     <EmbeddedResource Include="Resources\5s.png" />
     <EmbeddedResource Include="Costura32\SQLite.Interop.dll" />
     <EmbeddedResource Include="Costura64\SQLite.Interop.dll" />
+    <Content Include="Resources\close_image.png" />
     <Content Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup />

@@ -104,8 +104,11 @@
             this.Controls.Add(this.chooseImageButton);
             this.Controls.Add(this.screenshotTextBox);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AddScreenshotForm";
-            this.Text = "AddScreenshotForm";
+            this.Text = "Add Screenshot";
             this.Load += new System.EventHandler(this.AddScreenshotForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.screenshotPictureBox)).EndInit();
             this.ResumeLayout(false);

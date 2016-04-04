@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 //Load in the SQLite block
@@ -78,6 +80,77 @@ namespace YAPCSX2Launcher.Utilities.GamesManager
             SQLMngr sqlManager = new SQLMngr();
             return sqlManager.editGame(gameData);
         }
+
+        public string generateLaunchString(GamesConfigs gc, string configFolder, string isoFile)
+        {
+            bool editFilesTrigger = true;
+            string launchParams = " ";
+            #region config folder creation
+            if (!Directory.Exists(configFolder + gc.configFolder))
+            {
+                Directory.CreateDirectory(configFolder + gc.configFolder);
+                editFilesTrigger = false;
+            }
+            if(editFilesTrigger)
+            {
+                /* bios */
+                string[] biosFileTmp = gc.bios.Split('\\');
+                string biosFile = biosFileTmp[biosFileTmp.Length - 1];
+                string text = File.ReadAllText(configFolder + gc.configFolder + "\\PCSX2_ui.ini");
+                text = Regex.Replace(text, "BIOS.*", "BIOS=" + biosFile);
+                File.WriteAllText(configFolder + gc.configFolder + "\\PCSX2_ui.ini", text);
+                /* cheats */
+                string editFile = configFolder + gc.configFolder + "\\PCSX2_vm.ini";
+                string disableString = "EnableCheats=disabled";
+                string enableString = "EnableCheats=enabled";
+                if (gc.enableCheats)
+                {
+                    string text2 = File.ReadAllText(editFile);
+                    text2 = Regex.Replace(text2, disableString, enableString);
+                    File.WriteAllText(editFile, text2);
+                } else
+                {
+                    string text2 = File.ReadAllText(editFile);
+                    text2 = Regex.Replace(text2, enableString, disableString);
+                    File.WriteAllText(editFile, text2);
+                }
+            }
+
+            #endregion
+            launchParams = launchParams + "--cfgpath=" + "\"" + configFolder + gc.configFolder + "\" ";
+            if (gc.disableHacks)
+            {
+                launchParams = launchParams + " --nohacks";
+            }
+            if (gc.fromcd)
+            {
+                launchParams = launchParams + " --usecd";
+            }
+            if (gc.fullboot)
+            {
+                launchParams = launchParams + " --fullboot";
+            }
+            if (gc.nogui)
+            {
+                launchParams = launchParams + " --nogui";
+            }
+            if(gc.fromcd)
+            {
+                launchParams = launchParams + " --usecd";
+            }
+            if(!string.IsNullOrEmpty(isoFile) && !gc.fromcd)
+            {
+                launchParams = launchParams + " " + "\"" + isoFile + "\"";
+            }
+            launchParams = launchParams.Replace("  ", " ");
+            return launchParams.Trim();
+        }
+
+        public bool firstRun(int gameId)
+        {
+            SQLMngr sqlManager = new SQLMngr();
+            return sqlManager.firstRun(gameId);
+        }
     }
     #endregion
     #region Class: Screenshot
@@ -134,6 +207,7 @@ namespace YAPCSX2Launcher.Utilities.GamesManager
         public bool disableHacks { get; set; }
         public bool fullboot { get; set; }
         public bool nogui { get; set; }
+        public string customexecutable { get; set; }
 
         public bool addConfig(GamesConfigs configData)
         {

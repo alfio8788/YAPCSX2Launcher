@@ -197,6 +197,7 @@ namespace YAPCSX2Launcher
             gc.fromcd = (this.fromCdSwitch.Checked) ? true : false;
             gc.fullboot = (this.fullbootSwitch.Checked) ? true : false;
             gc.nogui = (this.noguiSwitch.Checked) ? true : false;
+            gc.customexecutable = (string.IsNullOrEmpty(this.CustomExecutableTextBox.Text.ToString())) ? null : this.CustomExecutableTextBox.ToString().ToLower();
             game.configs = gc;
             bool result = game.addGameToDb(game);
             if(result)
@@ -224,6 +225,16 @@ namespace YAPCSX2Launcher
                 FileStream imageBoxFile = new FileStream(imageFile, FileMode.Open);
                 pictureBox1.Image = new Bitmap(imageBoxFile);
                 imageBoxFile.Dispose();
+            }
+        }
+
+        private void CustomExecutableButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog customExeDialog = new OpenFileDialog();
+            customExeDialog.Filter = "Executable Files (*.exe) | *.exe";
+            if(customExeDialog.ShowDialog() == DialogResult.OK)
+            {
+                CustomExecutableTextBox.Text = customExeDialog.FileName;
             }
         }
     }

@@ -60,6 +60,7 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
         private SQLiteCommand updateGameData = new SQLiteCommand("UPDATE games SET serial = @serial, name = @name, filelocation = @filelocation, compatibility = @compatibility, region = @region, cover = @cover WHERE id = @gameid"); //editGame (DONE)
         private SQLiteCommand updateCoverQuery = new SQLiteCommand("UPDATE games set cover = @cover WHERE id = @id"); //updateGameCover (DONE)
         private SQLiteCommand getGameQuery = new SQLiteCommand("SELECT * FROM games WHERE id = @id"); //getGame (DONE)
+        private SQLiteCommand firstRunQuery = new SQLiteCommand("UPDATE games SET timeplayed = 1 WHERE id = @gameid");
         /* SQLite Queries: screenshots*/
         private SQLiteCommand addScreenshotQuery = new SQLiteCommand("INSERT INTO screenshots (gameid, screenshot) VALUES (@gameid,@screenshot)");//addScreenshot (DONE)
         private SQLiteCommand removeScreenshotQuery = new SQLiteCommand("DELETE FROM screenshots WHERE id = @screenshotid");//removeScreenShot (DONE)
@@ -69,8 +70,8 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
         /* SQLite Queries: gamesconfigs*/
         private SQLiteCommand getGameConfigsQuery = new SQLiteCommand("SELECT * FROM gamesconfigs WHERE gameid = @gameid");//getGameConfigs (DONE)
         private SQLiteCommand removeGameConfigsQuery = new SQLiteCommand("DELETE FROM gamesconfigs WHERE gameid = @gameid");//removeGameConfigs (DONE)
-        private SQLiteCommand addGameConfigsQuery = new SQLiteCommand("INSERT INTO gamesconfigs (gameid, configfolder, bios, enableCheats, fromcd, disableHacks, fullboot, nogui) VALUES (@gameid, @configfolder, @bios, @enablecheats, @fromcd, @disablehacks, @fullboot, @nogui)");//addGameConfigs (DONE)
-        private SQLiteCommand updateGameConfigsQuery = new SQLiteCommand("UPDATE gamesconfigs SET configfolder = @configfolder, bios = @bios, enablecheats = @enablecheats, fromcd = @fromcd, disablehacks = @disablehacks, fullboot = @fullboot, nogui = @nogui WHERE gameid = @gameid");//updateGameConfigs (DONE)
+        private SQLiteCommand addGameConfigsQuery = new SQLiteCommand("INSERT INTO gamesconfigs (gameid, configfolder, bios, enableCheats, fromcd, disableHacks, fullboot, nogui, customexecutable) VALUES (@gameid, @configfolder, @bios, @enablecheats, @fromcd, @disablehacks, @fullboot, @nogui, @customexecutable)");//addGameConfigs (DONE)
+        private SQLiteCommand updateGameConfigsQuery = new SQLiteCommand("UPDATE gamesconfigs SET configfolder = @configfolder, bios = @bios, enablecheats = @enablecheats, fromcd = @fromcd, disablehacks = @disablehacks, fullboot = @fullboot, nogui = @nogui, customexecutable = @customexecutable WHERE gameid = @gameid");//updateGameConfigs (DONE)
         /* SQLite Queries: Mixed tables Queries */
         //Needed? Probably not as of now
         #endregion
@@ -410,6 +411,25 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
             this.closeConnection();
             return status;
         }
+
+        public bool firstRun(int gameId)
+        {
+            bool status = true;
+            this.initConnection();
+            this.firstRunQuery.Prepare();
+            this.firstRunQuery.Parameters.AddWithValue("@gameid", gameId);
+            this.firstRunQuery.Connection = this.sqlConnection;
+            try
+            {
+                this.firstRunQuery.ExecuteNonQuery();
+            }
+            catch(Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+                status = false;
+            }
+            return status;
+        }
         #endregion
         #region screenshots
         /* Adds a screenshot to the Database */
@@ -605,6 +625,7 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
             @disablehacks
             @fullboot
             @nogui
+            @customexecutable
             */
             bool status = true;
             this.initConnection();
@@ -617,6 +638,7 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
             this.addGameConfigsQuery.Parameters.AddWithValue("@disablehacks", configsData.disableHacks.ToString().ToLower());
             this.addGameConfigsQuery.Parameters.AddWithValue("@fullboot", configsData.fullboot.ToString().ToLower());
             this.addGameConfigsQuery.Parameters.AddWithValue("@nogui", configsData.nogui.ToString().ToLower());
+            this.addGameConfigsQuery.Parameters.AddWithValue("@customexecutble", configsData.nogui.ToString().ToLower());
             this.addGameConfigsQuery.Connection = this.sqlConnection;
             try
             {
@@ -643,6 +665,7 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
             @fullboot
             @nogui
             @gameid
+            @customexecutable
             */
             bool status = true;
             this.initConnection();
@@ -654,6 +677,7 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
             this.updateGameConfigsQuery.Parameters.AddWithValue("@disablehacks", configsData.disableHacks.ToString().ToLower());
             this.updateGameConfigsQuery.Parameters.AddWithValue("@fullboot", configsData.fullboot.ToString().ToLower());
             this.updateGameConfigsQuery.Parameters.AddWithValue("@nogui", configsData.nogui.ToString().ToLower());
+            this.updateGameConfigsQuery.Parameters.AddWithValue("@customexecutable", (string.IsNullOrEmpty(configsData.customexecutable)) ? null : configsData.customexecutable.ToString().ToLower());
             this.updateGameConfigsQuery.Parameters.AddWithValue("@gameid", configsData.gameId);
             this.updateGameConfigsQuery.Connection = this.sqlConnection;
             try

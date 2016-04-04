@@ -72,6 +72,7 @@
             this.viewScreenshotsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addScreenshotsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.launchGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listViewSwitch)).BeginInit();
@@ -370,12 +371,13 @@
             // gameEditMenu
             // 
             this.gameEditMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.launchGameToolStripMenuItem,
             this.changeCoverToolStripMenuItem,
             this.editGameSubMenu,
             this.addScreenshotToolStripMenuItem,
             this.removeGameToolStripMenuItem});
             this.gameEditMenu.Name = "gameEditMenu";
-            this.gameEditMenu.Size = new System.Drawing.Size(156, 114);
+            this.gameEditMenu.Size = new System.Drawing.Size(156, 136);
             this.gameEditMenu.Text = "Menu";
             // 
             // changeCoverToolStripMenuItem
@@ -436,6 +438,13 @@
             this.removeGameToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.removeGameToolStripMenuItem.Text = "&Remove Game";
             this.removeGameToolStripMenuItem.Click += new System.EventHandler(this.removeGameToolStripMenuItem_Click);
+            // 
+            // launchGameToolStripMenuItem
+            // 
+            this.launchGameToolStripMenuItem.Name = "launchGameToolStripMenuItem";
+            this.launchGameToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.launchGameToolStripMenuItem.Text = "&Launch game";
+            this.launchGameToolStripMenuItem.Click += new System.EventHandler(this.launchGameToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -508,6 +517,7 @@
         private System.Windows.Forms.ToolStripMenuItem gameConfigurationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewScreenshotsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addScreenshotsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem launchGameToolStripMenuItem;
     }
 }
 

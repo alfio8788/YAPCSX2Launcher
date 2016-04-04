@@ -34,6 +34,7 @@ namespace YAPCSX2Launcher
             this.disableHacksSwitch.Checked = gameConfig.disableHacks;
             this.noguiSwitch.Checked = gameConfig.nogui;
             this.biosComboBox.SelectedValue = gameConfig.bios;
+            this.CustomExecutableTextBox.Text = (string.IsNullOrEmpty(gameConfig.customexecutable)) ? gameConfig.customexecutable : "";
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -54,6 +55,7 @@ namespace YAPCSX2Launcher
             @fullboot
             @nogui
             @gameid
+            @customexecutable
             */
             gameConfig.configFolder = this.gameConfig.configFolder;
             gameConfig.bios = this.biosComboBox.SelectedValue.ToString();
@@ -62,6 +64,7 @@ namespace YAPCSX2Launcher
             gameConfig.disableHacks = this.disableHacksSwitch.Checked;
             gameConfig.fullboot = this.fullbootSwitch.Checked;
             gameConfig.nogui = this.noguiSwitch.Checked;
+            gameConfig.customexecutable = (string.IsNullOrEmpty(this.CustomExecutableTextBox.Text.ToString())) ? null : this.CustomExecutableTextBox.Text.ToString().ToLower();
             gameConfig.gameId = this.gameConfig.gameId;
 
             bool result = gameConfig.updateConfig(gameConfig);
@@ -71,6 +74,16 @@ namespace YAPCSX2Launcher
             } else
             {
                 MessageBox.Show("Error: Settings couldn't be saved, try again later", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CustomExecutableButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog customExeDialog = new OpenFileDialog();
+            customExeDialog.Filter = "Executable Files (*.exe) | *.exe";
+            if (customExeDialog.ShowDialog() == DialogResult.OK)
+            {
+                CustomExecutableTextBox.Text = customExeDialog.FileName;
             }
         }
     }

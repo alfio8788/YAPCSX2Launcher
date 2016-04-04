@@ -56,6 +56,9 @@
             this.noguiSwitch = new System.Windows.Forms.CheckBox();
             this.gameAddButton = new System.Windows.Forms.Button();
             this.gameAddCancelButton = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.CustomExecutableButton = new System.Windows.Forms.Button();
+            this.CustomExecutableTextBox = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.gameDataGroupBox.SuspendLayout();
@@ -280,6 +283,9 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.CustomExecutableButton);
+            this.tabPage2.Controls.Add(this.CustomExecutableTextBox);
+            this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.biosComboBox);
             this.tabPage2.Controls.Add(this.fullbootSwitch);
@@ -298,7 +304,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 15);
+            this.label7.Location = new System.Drawing.Point(3, 35);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(35, 13);
             this.label7.TabIndex = 6;
@@ -307,7 +313,7 @@
             // biosComboBox
             // 
             this.biosComboBox.FormattingEnabled = true;
-            this.biosComboBox.Location = new System.Drawing.Point(44, 12);
+            this.biosComboBox.Location = new System.Drawing.Point(44, 32);
             this.biosComboBox.Name = "biosComboBox";
             this.biosComboBox.Size = new System.Drawing.Size(219, 21);
             this.biosComboBox.TabIndex = 5;
@@ -315,7 +321,7 @@
             // fullbootSwitch
             // 
             this.fullbootSwitch.AutoSize = true;
-            this.fullbootSwitch.Location = new System.Drawing.Point(6, 131);
+            this.fullbootSwitch.Location = new System.Drawing.Point(6, 151);
             this.fullbootSwitch.Name = "fullbootSwitch";
             this.fullbootSwitch.Size = new System.Drawing.Size(67, 17);
             this.fullbootSwitch.TabIndex = 4;
@@ -325,7 +331,7 @@
             // fromCdSwitch
             // 
             this.fromCdSwitch.AutoSize = true;
-            this.fromCdSwitch.Location = new System.Drawing.Point(6, 108);
+            this.fromCdSwitch.Location = new System.Drawing.Point(6, 128);
             this.fromCdSwitch.Name = "fromCdSwitch";
             this.fromCdSwitch.Size = new System.Drawing.Size(67, 17);
             this.fromCdSwitch.TabIndex = 3;
@@ -335,7 +341,7 @@
             // enableCheatsSwitch
             // 
             this.enableCheatsSwitch.AutoSize = true;
-            this.enableCheatsSwitch.Location = new System.Drawing.Point(6, 85);
+            this.enableCheatsSwitch.Location = new System.Drawing.Point(6, 105);
             this.enableCheatsSwitch.Name = "enableCheatsSwitch";
             this.enableCheatsSwitch.Size = new System.Drawing.Size(95, 17);
             this.enableCheatsSwitch.TabIndex = 2;
@@ -345,7 +351,7 @@
             // disableHacksSwitch
             // 
             this.disableHacksSwitch.AutoSize = true;
-            this.disableHacksSwitch.Location = new System.Drawing.Point(6, 62);
+            this.disableHacksSwitch.Location = new System.Drawing.Point(6, 82);
             this.disableHacksSwitch.Name = "disableHacksSwitch";
             this.disableHacksSwitch.Size = new System.Drawing.Size(95, 17);
             this.disableHacksSwitch.TabIndex = 1;
@@ -355,7 +361,7 @@
             // noguiSwitch
             // 
             this.noguiSwitch.AutoSize = true;
-            this.noguiSwitch.Location = new System.Drawing.Point(6, 39);
+            this.noguiSwitch.Location = new System.Drawing.Point(6, 59);
             this.noguiSwitch.Name = "noguiSwitch";
             this.noguiSwitch.Size = new System.Drawing.Size(62, 17);
             this.noguiSwitch.TabIndex = 0;
@@ -381,6 +387,33 @@
             this.gameAddCancelButton.Text = "Cancel";
             this.gameAddCancelButton.UseVisualStyleBackColor = true;
             this.gameAddCancelButton.Click += new System.EventHandler(this.gameAddCancelButton_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(3, 9);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(163, 13);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Custom PCSX2 Executable Path:";
+            // 
+            // CustomExecutableButton
+            // 
+            this.CustomExecutableButton.Location = new System.Drawing.Point(593, 6);
+            this.CustomExecutableButton.Name = "CustomExecutableButton";
+            this.CustomExecutableButton.Size = new System.Drawing.Size(25, 20);
+            this.CustomExecutableButton.TabIndex = 9;
+            this.CustomExecutableButton.Text = "...";
+            this.CustomExecutableButton.UseVisualStyleBackColor = true;
+            this.CustomExecutableButton.Click += new System.EventHandler(this.CustomExecutableButton_Click);
+            // 
+            // CustomExecutableTextBox
+            // 
+            this.CustomExecutableTextBox.Enabled = false;
+            this.CustomExecutableTextBox.Location = new System.Drawing.Point(172, 6);
+            this.CustomExecutableTextBox.Name = "CustomExecutableTextBox";
+            this.CustomExecutableTextBox.Size = new System.Drawing.Size(415, 20);
+            this.CustomExecutableTextBox.TabIndex = 8;
             // 
             // GameAddForm
             // 
@@ -438,5 +471,8 @@
         private System.Windows.Forms.CheckBox enableCheatsSwitch;
         private System.Windows.Forms.CheckBox disableHacksSwitch;
         private System.Windows.Forms.CheckBox noguiSwitch;
+        private System.Windows.Forms.Button CustomExecutableButton;
+        private System.Windows.Forms.TextBox CustomExecutableTextBox;
+        private System.Windows.Forms.Label label8;
     }
 }

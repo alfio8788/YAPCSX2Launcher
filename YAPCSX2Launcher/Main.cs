@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using Microsoft.Win32;
 using System.IO;
 using System.Reflection;
-using YAPCSX2Launcher.Utilities.Emulator;
 // Load App Utilities
 using YAPCSX2Launcher.Utilities.SQLManager;
 using YAPCSX2Launcher.Utilities.GamesManager;
@@ -18,7 +17,6 @@ using YAPCSX2Launcher.Utilities.SettingsManager;
 using YAPCSX2Launcher.Utilities.MainManager;
 //Threading tests
 using System.Threading;
-using System.Diagnostics;
 using BrightIdeasSoftware;
 //using static YAPCSX2Launcher.SingleInstanceMutex;
 
@@ -26,8 +24,10 @@ namespace YAPCSX2Launcher
 {
     public partial class Main : Form
     {
+        private Configs appSettings;
         public Main()
         {
+            #region single instance
             /*SingleInstanceMutex sim = new SingleInstanceMutex();
             if (sim.IsOtherInstanceRunning)
             {
@@ -35,10 +35,11 @@ namespace YAPCSX2Launcher
                 //Dispose();
                 Application.Exit();
             }*/
+            #endregion
             InitializeComponent();
+            #region first run or splash
             //First Launch? No problem we will solve this with a configuration wizard, else? Simply show the main window
             string dbfile = foldersAndFiles("dbfile");
-            //MessageBox.Show(dbfile);
             //COMMENT THE IF CONDITION TO SHOW THE WIZARD SETUP FOR DEBUG EVEN AFTER THE SOFTWARE ALREADY CREATED IT'S FIRST CONFIG
             if (!File.Exists(dbfile))
             {
@@ -46,13 +47,15 @@ namespace YAPCSX2Launcher
                 Form wizardForm = new SetupWizardForm();
                 wizardForm.ShowDialog();
             } //Let's speed things up for now TODO: Uncomment when done (probably to remove)
-            /*else
-            {
-                Form splashScreen = new SplashForm();
-                splashScreen.ShowDialog();
-            }*/
+              /*else
+              {
+                  Form splashScreen = new SplashForm();
+                  splashScreen.ShowDialog();
+              }*/
+            #endregion
             /* Get the settings */
             Configs configs = new Configs().getSettings();
+            this.appSettings = configs;
             DataTable games = new Games().getGamesCatalogue();
             //MessageBox.Show(games.Rows.Count.ToString());
             //Get Images
@@ -292,6 +295,54 @@ namespace YAPCSX2Launcher
             Size size = new Size(int.Parse(Math.Round(formWidth, 0).ToString()), int.Parse(Math.Round(formHeight, 0).ToString()));
             screenshotsForm.Size = size;
             screenshotsForm.ShowDialog();
+        }
+
+        private void launchGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            #region vars
+            DataRow selectedRow = (DataRow)this.objectListView1.SelectedObject;
+            int gameId = int.Parse(selectedRow["id"].ToString());
+            #endregion
+            //Get Game Data
+            Games game = new Games().getGame(gameId);
+            string configFolder = foldersAndFiles("emulatorconfigurationfoler");
+            bool firstLaunch = (game.timeplayed == 0) ? true : false;
+            if (firstLaunch)
+            {
+                MessageBox.Show("This is the first time this game is being played from this launcher, PCSX2 will be launched to let you configure the emulator." + Environment.NewLine + "Once configured close the emulator and launch again the game", "First Launch", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                bool result = game.firstRun(gameId);
+                if(result)
+                {
+                    //Launch without params
+                    if(string.IsNullOrEmpty(game.configs.customexecutable))
+                    {
+                        var proc = System.Diagnostics.Process.Start(this.appSettings.pcsx2Executable, "--cfgpath=" + configFolder + game.configs.configFolder);
+                        proc.WaitForExit();
+                    } else
+                    {
+                        var proc = System.Diagnostics.Process.Start(@game.configs.customexecutable, "--cfgpath=" + configFolder + game.configs.configFolder);
+                        proc.WaitForExit();
+                    }
+                } else
+                {
+                    MessageBox.Show("Error: Could not set the first run varible correctly, try again in a few seconds","Error!",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            } else
+            {
+                string launchParams = game.generateLaunchString(game.configs, configFolder, game.location);
+                DateTime timenow = DateTime.Now;
+                if (string.IsNullOrEmpty(game.configs.customexecutable))
+                {
+                    //MessageBox.Show(launchParams);
+                    var proc = System.Diagnostics.Process.Start(this.appSettings.pcsx2Executable, launchParams);
+                    proc.WaitForExit();
+                }
+                else
+                {
+                    var proc = System.Diagnostics.Process.Start(game.configs.customexecutable, launchParams);
+                    proc.WaitForExit();
+                }
+            }
         }
     }
 }

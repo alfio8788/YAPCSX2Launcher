@@ -91,7 +91,8 @@ namespace YAPCSX2Launcher.Utilities.GamesManager
                 Directory.CreateDirectory(configFolder + gc.configFolder);
                 editFilesTrigger = false;
             }
-            if(editFilesTrigger)
+            #endregion
+            if (editFilesTrigger)
             {
                 /* bios */
                 string[] biosFileTmp = gc.bios.Split('\\');
@@ -99,10 +100,14 @@ namespace YAPCSX2Launcher.Utilities.GamesManager
                 string text = File.ReadAllText(configFolder + gc.configFolder + "\\PCSX2_ui.ini");
                 text = Regex.Replace(text, "BIOS.*", "BIOS=" + biosFile);
                 File.WriteAllText(configFolder + gc.configFolder + "\\PCSX2_ui.ini", text);
-                /* cheats */
+                #region variables
                 string editFile = configFolder + gc.configFolder + "\\PCSX2_vm.ini";
                 string disableString = "EnableCheats=disabled";
                 string enableString = "EnableCheats=enabled";
+                string wspEnableString = "EnableWideScreenPatches=enabled";
+                string wspDisableString = "EnableWideScreenPatches=disabled";
+                #endregion
+                #region cheats
                 if (gc.enableCheats)
                 {
                     string text2 = File.ReadAllText(editFile);
@@ -114,9 +119,23 @@ namespace YAPCSX2Launcher.Utilities.GamesManager
                     text2 = Regex.Replace(text2, enableString, disableString);
                     File.WriteAllText(editFile, text2);
                 }
+                #endregion
+                #region widescreen
+                if (gc.widescreensupport)
+                {
+                    string text3 = File.ReadAllText(editFile);
+                    text3 = Regex.Replace(text3, wspDisableString, wspEnableString);
+                    File.WriteAllText(editFile, text3);
+                } else
+                {
+                    string text3 = File.ReadAllText(editFile);
+                    text3 = Regex.Replace(text3, wspEnableString, wspDisableString);
+                    File.WriteAllText(editFile, text3);
+                }
+                #endregion
             }
 
-            #endregion
+            #region launchparams logic
             launchParams = launchParams + "--cfgpath=" + "\"" + configFolder + gc.configFolder + "\" ";
             if (gc.disableHacks)
             {
@@ -143,6 +162,7 @@ namespace YAPCSX2Launcher.Utilities.GamesManager
                 launchParams = launchParams + " " + "\"" + isoFile + "\"";
             }
             launchParams = launchParams.Replace("  ", " ");
+            #endregion
             return launchParams.Trim();
         }
 

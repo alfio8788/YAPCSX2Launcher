@@ -40,6 +40,7 @@
             this.CustomExecutableButton = new System.Windows.Forms.Button();
             this.CustomExecutableTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.WideScreenSupportCheckbox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label7
@@ -157,12 +158,24 @@
             this.label8.TabIndex = 16;
             this.label8.Text = "Custom PCSX2 Executable Path:";
             // 
+            // WideScreenSupportCheckbox
+            // 
+            this.WideScreenSupportCheckbox.AutoSize = true;
+            this.WideScreenSupportCheckbox.Location = new System.Drawing.Point(12, 174);
+            this.WideScreenSupportCheckbox.Name = "WideScreenSupportCheckbox";
+            this.WideScreenSupportCheckbox.Size = new System.Drawing.Size(161, 17);
+            this.WideScreenSupportCheckbox.TabIndex = 19;
+            this.WideScreenSupportCheckbox.Text = "Enable Widescreen Patches";
+            this.WideScreenSupportCheckbox.UseMnemonic = false;
+            this.WideScreenSupportCheckbox.UseVisualStyleBackColor = true;
+            // 
             // GameConfigEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(549, 221);
+            this.Controls.Add(this.WideScreenSupportCheckbox);
             this.Controls.Add(this.CustomExecutableButton);
             this.Controls.Add(this.CustomExecutableTextBox);
             this.Controls.Add(this.label8);
@@ -199,5 +212,6 @@
         private System.Windows.Forms.Button CustomExecutableButton;
         private System.Windows.Forms.TextBox CustomExecutableTextBox;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox WideScreenSupportCheckbox;
     }
 }

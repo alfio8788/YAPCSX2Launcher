@@ -70,8 +70,8 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
         /* SQLite Queries: gamesconfigs*/
         private SQLiteCommand getGameConfigsQuery = new SQLiteCommand("SELECT * FROM gamesconfigs WHERE gameid = @gameid");//getGameConfigs (DONE)
         private SQLiteCommand removeGameConfigsQuery = new SQLiteCommand("DELETE FROM gamesconfigs WHERE gameid = @gameid");//removeGameConfigs (DONE)
-        private SQLiteCommand addGameConfigsQuery = new SQLiteCommand("INSERT INTO gamesconfigs (gameid, configfolder, bios, enableCheats, fromcd, disableHacks, fullboot, nogui, customexecutable) VALUES (@gameid, @configfolder, @bios, @enablecheats, @fromcd, @disablehacks, @fullboot, @nogui, @customexecutable)");//addGameConfigs (DONE)
-        private SQLiteCommand updateGameConfigsQuery = new SQLiteCommand("UPDATE gamesconfigs SET configfolder = @configfolder, bios = @bios, enablecheats = @enablecheats, fromcd = @fromcd, disablehacks = @disablehacks, fullboot = @fullboot, nogui = @nogui, customexecutable = @customexecutable WHERE gameid = @gameid");//updateGameConfigs (DONE)
+        private SQLiteCommand addGameConfigsQuery = new SQLiteCommand("INSERT INTO gamesconfigs (gameid, configfolder, bios, enableCheats, fromcd, disableHacks, fullboot, nogui, customexecutable, widescreensupport) VALUES (@gameid, @configfolder, @bios, @enablecheats, @fromcd, @disablehacks, @fullboot, @nogui, @customexecutable, @widescreensupport)");//addGameConfigs (DONE)
+        private SQLiteCommand updateGameConfigsQuery = new SQLiteCommand("UPDATE gamesconfigs SET configfolder = @configfolder, bios = @bios, enablecheats = @enablecheats, fromcd = @fromcd, disablehacks = @disablehacks, fullboot = @fullboot, nogui = @nogui, customexecutable = @customexecutable, widescreensupport = @widescreensupport WHERE gameid = @gameid");//updateGameConfigs (DONE)
         /* SQLite Queries: Mixed tables Queries */
         //Needed? Probably not as of now
         #endregion
@@ -568,8 +568,6 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
             this.getGameConfigsQuery.Parameters.AddWithValue("@gameid", gameId);
             this.getGameConfigsQuery.Connection = this.sqlConnection;
             this.sqlDataAdapter = new SQLiteDataAdapter(this.getGameConfigsQuery);
-            //string sqlQuery = this.getGameConfigsQuery.ToString();
-            //this.sqlDataAdapter = new SQLiteDataAdapter(sqlQuery, sqlConnection);
             DataSet gameConfigsDataSet = new DataSet();
             gameConfigsDataSet.Reset();
             DataTable gameConfigsDataTable = new DataTable();
@@ -585,6 +583,8 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
             gameConfigs.disableHacks = bool.Parse(gameConfigsDataTable.Rows[0]["disablehacks"].ToString());
             gameConfigs.fullboot = bool.Parse(gameConfigsDataTable.Rows[0]["fullboot"].ToString());
             gameConfigs.nogui = bool.Parse(gameConfigsDataTable.Rows[0]["nogui"].ToString());
+            gameConfigs.customexecutable = (string.IsNullOrEmpty(gameConfigsDataTable.Rows[0]["customexecutable"].ToString())) ? null : gameConfigsDataTable.Rows[0]["customexecutable"].ToString();
+            gameConfigs.widescreensupport = bool.Parse(gameConfigsDataTable.Rows[0]["widescreensupport"].ToString());
             this.closeConnection();
             gameConfigsDataSet.Dispose();
             gameConfigsDataTable.Dispose();
@@ -639,6 +639,7 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
             this.addGameConfigsQuery.Parameters.AddWithValue("@fullboot", configsData.fullboot.ToString().ToLower());
             this.addGameConfigsQuery.Parameters.AddWithValue("@nogui", configsData.nogui.ToString().ToLower());
             this.addGameConfigsQuery.Parameters.AddWithValue("@customexecutble", configsData.nogui.ToString().ToLower());
+            this.addGameConfigsQuery.Parameters.AddWithValue("@widescreensupport", configsData.widescreensupport.ToString().ToLower());
             this.addGameConfigsQuery.Connection = this.sqlConnection;
             try
             {
@@ -678,6 +679,7 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
             this.updateGameConfigsQuery.Parameters.AddWithValue("@fullboot", configsData.fullboot.ToString().ToLower());
             this.updateGameConfigsQuery.Parameters.AddWithValue("@nogui", configsData.nogui.ToString().ToLower());
             this.updateGameConfigsQuery.Parameters.AddWithValue("@customexecutable", (string.IsNullOrEmpty(configsData.customexecutable)) ? null : configsData.customexecutable.ToString().ToLower());
+            this.updateGameConfigsQuery.Parameters.AddWithValue("@widescreensupport", configsData.widescreensupport.ToString().ToLower());
             this.updateGameConfigsQuery.Parameters.AddWithValue("@gameid", configsData.gameId);
             this.updateGameConfigsQuery.Connection = this.sqlConnection;
             try

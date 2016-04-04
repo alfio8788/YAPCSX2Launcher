@@ -64,6 +64,7 @@
             this.olvColumnCompatibility = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnId = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.gameEditMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.launchGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeCoverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editGameSubMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.gameInfosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,7 +73,6 @@
             this.viewScreenshotsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addScreenshotsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.launchGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listViewSwitch)).BeginInit();
@@ -303,6 +303,7 @@
             this.objectListView1.UseCompatibleStateImageBehavior = false;
             this.objectListView1.View = System.Windows.Forms.View.Details;
             this.objectListView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.objectListView1_MouseClick);
+            this.objectListView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.objectListView1_MouseDoubleClick);
             // 
             // olvColumnCover
             // 
@@ -377,8 +378,15 @@
             this.addScreenshotToolStripMenuItem,
             this.removeGameToolStripMenuItem});
             this.gameEditMenu.Name = "gameEditMenu";
-            this.gameEditMenu.Size = new System.Drawing.Size(156, 136);
+            this.gameEditMenu.Size = new System.Drawing.Size(156, 114);
             this.gameEditMenu.Text = "Menu";
+            // 
+            // launchGameToolStripMenuItem
+            // 
+            this.launchGameToolStripMenuItem.Name = "launchGameToolStripMenuItem";
+            this.launchGameToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.launchGameToolStripMenuItem.Text = "&Launch game";
+            this.launchGameToolStripMenuItem.Click += new System.EventHandler(this.launchGameToolStripMenuItem_Click);
             // 
             // changeCoverToolStripMenuItem
             // 
@@ -438,13 +446,6 @@
             this.removeGameToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.removeGameToolStripMenuItem.Text = "&Remove Game";
             this.removeGameToolStripMenuItem.Click += new System.EventHandler(this.removeGameToolStripMenuItem_Click);
-            // 
-            // launchGameToolStripMenuItem
-            // 
-            this.launchGameToolStripMenuItem.Name = "launchGameToolStripMenuItem";
-            this.launchGameToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.launchGameToolStripMenuItem.Text = "&Launch game";
-            this.launchGameToolStripMenuItem.Click += new System.EventHandler(this.launchGameToolStripMenuItem_Click);
             // 
             // Main
             // 

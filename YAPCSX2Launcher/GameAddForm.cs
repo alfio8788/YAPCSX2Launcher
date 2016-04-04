@@ -197,6 +197,7 @@ namespace YAPCSX2Launcher
             gc.fromcd = (this.fromCdSwitch.Checked) ? true : false;
             gc.fullboot = (this.fullbootSwitch.Checked) ? true : false;
             gc.nogui = (this.noguiSwitch.Checked) ? true : false;
+            gc.widescreensupport = (this.WideScreenSupportCheckbox.Checked) ? true : false;
             gc.customexecutable = (string.IsNullOrEmpty(this.CustomExecutableTextBox.Text.ToString())) ? null : this.CustomExecutableTextBox.ToString().ToLower();
             game.configs = gc;
             bool result = game.addGameToDb(game);

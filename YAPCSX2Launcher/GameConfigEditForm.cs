@@ -35,6 +35,7 @@ namespace YAPCSX2Launcher
             this.noguiSwitch.Checked = gameConfig.nogui;
             this.biosComboBox.SelectedValue = gameConfig.bios;
             this.CustomExecutableTextBox.Text = (string.IsNullOrEmpty(gameConfig.customexecutable)) ? gameConfig.customexecutable : "";
+            this.WideScreenSupportCheckbox.Checked = gameConfig.widescreensupport;
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -66,6 +67,7 @@ namespace YAPCSX2Launcher
             gameConfig.nogui = this.noguiSwitch.Checked;
             gameConfig.customexecutable = (string.IsNullOrEmpty(this.CustomExecutableTextBox.Text.ToString())) ? null : this.CustomExecutableTextBox.Text.ToString().ToLower();
             gameConfig.gameId = this.gameConfig.gameId;
+            gameConfig.widescreensupport = this.WideScreenSupportCheckbox.Checked;
 
             bool result = gameConfig.updateConfig(gameConfig);
             if(result)

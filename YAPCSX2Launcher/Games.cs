@@ -151,6 +151,12 @@ namespace YAPCSX2Launcher.Utilities.GamesManager
             SQLMngr sqlManager = new SQLMngr();
             return sqlManager.firstRun(gameId);
         }
+
+        public void updatePlaytime(int gameId, int seconds)
+        {
+            SQLMngr sqlManager = new SQLMngr();
+            sqlManager.updateGamePlayTime(gameId, seconds);
+        }
     }
     #endregion
     #region Class: Screenshot
@@ -208,6 +214,7 @@ namespace YAPCSX2Launcher.Utilities.GamesManager
         public bool fullboot { get; set; }
         public bool nogui { get; set; }
         public string customexecutable { get; set; }
+        public bool widescreensupport { get; set; }
 
         public bool addConfig(GamesConfigs configData)
         {
@@ -233,6 +240,15 @@ namespace YAPCSX2Launcher.Utilities.GamesManager
         {
             SQLMngr sqlManager = new SQLMngr();
             return sqlManager.removeGameConfigs(gameId);
+        }
+    }
+    #endregion
+    #region Class: ArchiveManage
+    class ArchiveManage
+    {
+        public void extractWidescreenPatchesArchive(string folder)
+        {
+            System.IO.Compression.ZipFile.ExtractToDirectory(folder + "\\cheats_ws.zip", folder + "\\cheats_ws\\");
         }
     }
     #endregion

@@ -47,6 +47,9 @@
             this.isoFileTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.CustomExecutableButton = new System.Windows.Forms.Button();
+            this.CustomExecutableTextBox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.biosComboBox = new System.Windows.Forms.ComboBox();
             this.fullbootSwitch = new System.Windows.Forms.CheckBox();
@@ -56,9 +59,7 @@
             this.noguiSwitch = new System.Windows.Forms.CheckBox();
             this.gameAddButton = new System.Windows.Forms.Button();
             this.gameAddCancelButton = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.CustomExecutableButton = new System.Windows.Forms.Button();
-            this.CustomExecutableTextBox = new System.Windows.Forms.TextBox();
+            this.WideScreenSupportCheckbox = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.gameDataGroupBox.SuspendLayout();
@@ -283,6 +284,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.WideScreenSupportCheckbox);
             this.tabPage2.Controls.Add(this.CustomExecutableButton);
             this.tabPage2.Controls.Add(this.CustomExecutableTextBox);
             this.tabPage2.Controls.Add(this.label8);
@@ -300,6 +302,33 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Game Settings";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // CustomExecutableButton
+            // 
+            this.CustomExecutableButton.Location = new System.Drawing.Point(593, 6);
+            this.CustomExecutableButton.Name = "CustomExecutableButton";
+            this.CustomExecutableButton.Size = new System.Drawing.Size(25, 20);
+            this.CustomExecutableButton.TabIndex = 9;
+            this.CustomExecutableButton.Text = "...";
+            this.CustomExecutableButton.UseVisualStyleBackColor = true;
+            this.CustomExecutableButton.Click += new System.EventHandler(this.CustomExecutableButton_Click);
+            // 
+            // CustomExecutableTextBox
+            // 
+            this.CustomExecutableTextBox.Enabled = false;
+            this.CustomExecutableTextBox.Location = new System.Drawing.Point(172, 6);
+            this.CustomExecutableTextBox.Name = "CustomExecutableTextBox";
+            this.CustomExecutableTextBox.Size = new System.Drawing.Size(415, 20);
+            this.CustomExecutableTextBox.TabIndex = 8;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(3, 9);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(163, 13);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Custom PCSX2 Executable Path:";
             // 
             // label7
             // 
@@ -388,32 +417,16 @@
             this.gameAddCancelButton.UseVisualStyleBackColor = true;
             this.gameAddCancelButton.Click += new System.EventHandler(this.gameAddCancelButton_Click);
             // 
-            // label8
+            // WideScreenSupportCheckbox
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 9);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(163, 13);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Custom PCSX2 Executable Path:";
-            // 
-            // CustomExecutableButton
-            // 
-            this.CustomExecutableButton.Location = new System.Drawing.Point(593, 6);
-            this.CustomExecutableButton.Name = "CustomExecutableButton";
-            this.CustomExecutableButton.Size = new System.Drawing.Size(25, 20);
-            this.CustomExecutableButton.TabIndex = 9;
-            this.CustomExecutableButton.Text = "...";
-            this.CustomExecutableButton.UseVisualStyleBackColor = true;
-            this.CustomExecutableButton.Click += new System.EventHandler(this.CustomExecutableButton_Click);
-            // 
-            // CustomExecutableTextBox
-            // 
-            this.CustomExecutableTextBox.Enabled = false;
-            this.CustomExecutableTextBox.Location = new System.Drawing.Point(172, 6);
-            this.CustomExecutableTextBox.Name = "CustomExecutableTextBox";
-            this.CustomExecutableTextBox.Size = new System.Drawing.Size(415, 20);
-            this.CustomExecutableTextBox.TabIndex = 8;
+            this.WideScreenSupportCheckbox.AutoSize = true;
+            this.WideScreenSupportCheckbox.Location = new System.Drawing.Point(6, 174);
+            this.WideScreenSupportCheckbox.Name = "WideScreenSupportCheckbox";
+            this.WideScreenSupportCheckbox.Size = new System.Drawing.Size(161, 17);
+            this.WideScreenSupportCheckbox.TabIndex = 10;
+            this.WideScreenSupportCheckbox.Text = "Enable Widescreen Patches";
+            this.WideScreenSupportCheckbox.UseMnemonic = false;
+            this.WideScreenSupportCheckbox.UseVisualStyleBackColor = true;
             // 
             // GameAddForm
             // 
@@ -474,5 +487,6 @@
         private System.Windows.Forms.Button CustomExecutableButton;
         private System.Windows.Forms.TextBox CustomExecutableTextBox;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox WideScreenSupportCheckbox;
     }
 }

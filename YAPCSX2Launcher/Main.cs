@@ -241,7 +241,6 @@ namespace YAPCSX2Launcher
             }
         }
 
-        /* game list reload logic */
         public void listReloadHelper()
         {
             this.reloadMainList();
@@ -299,10 +298,20 @@ namespace YAPCSX2Launcher
 
         private void launchGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            #region vars
             DataRow selectedRow = (DataRow)this.objectListView1.SelectedObject;
             int gameId = int.Parse(selectedRow["id"].ToString());
-            #endregion
+            this.launchGame(gameId);
+        }
+
+        private void objectListView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            DataRow selectedRow = (DataRow)this.objectListView1.SelectedObject;
+            int gameId = int.Parse(selectedRow["id"].ToString());
+            this.launchGame(gameId);
+        }
+
+        private void launchGame(int gameId)
+        {
             //Get Game Data
             Games game = new Games().getGame(gameId);
             string configFolder = foldersAndFiles("emulatorconfigurationfoler");
@@ -311,23 +320,26 @@ namespace YAPCSX2Launcher
             {
                 MessageBox.Show("This is the first time this game is being played from this launcher, PCSX2 will be launched to let you configure the emulator." + Environment.NewLine + "Once configured close the emulator and launch again the game", "First Launch", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 bool result = game.firstRun(gameId);
-                if(result)
+                if (result)
                 {
                     //Launch without params
-                    if(string.IsNullOrEmpty(game.configs.customexecutable))
+                    if (string.IsNullOrEmpty(game.configs.customexecutable))
                     {
                         var proc = System.Diagnostics.Process.Start(this.appSettings.pcsx2Executable, "--cfgpath=" + configFolder + game.configs.configFolder);
                         proc.WaitForExit();
-                    } else
+                    }
+                    else
                     {
                         var proc = System.Diagnostics.Process.Start(@game.configs.customexecutable, "--cfgpath=" + configFolder + game.configs.configFolder);
                         proc.WaitForExit();
                     }
-                } else
-                {
-                    MessageBox.Show("Error: Could not set the first run varible correctly, try again in a few seconds","Error!",MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            } else
+                else
+                {
+                    MessageBox.Show("Error: Could not set the first run varible correctly, try again in a few seconds", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
             {
                 string launchParams = game.generateLaunchString(game.configs, configFolder, game.location);
                 DateTime timenow = DateTime.Now;
@@ -342,6 +354,10 @@ namespace YAPCSX2Launcher
                     var proc = System.Diagnostics.Process.Start(game.configs.customexecutable, launchParams);
                     proc.WaitForExit();
                 }
+                DateTime timeAfter = DateTime.Now;
+                int secondsPlayed = (int)timeAfter.Subtract(timenow).TotalSeconds;
+                //MessageBox.Show("Emulator was open for: " + secondsPlayed.ToString() + " Seconds");
+                game.updatePlaytime(gameId, secondsPlayed);
             }
         }
     }

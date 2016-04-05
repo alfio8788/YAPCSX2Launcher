@@ -28,7 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.FullscreenPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
+            // 
+            // FullscreenPanel
+            // 
+            this.FullscreenPanel.AutoScroll = true;
+            this.FullscreenPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FullscreenPanel.Location = new System.Drawing.Point(0, 0);
+            this.FullscreenPanel.Name = "FullscreenPanel";
+            this.FullscreenPanel.Size = new System.Drawing.Size(1029, 556);
+            this.FullscreenPanel.TabIndex = 0;
             // 
             // FullScreenForm
             // 
@@ -36,6 +46,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1029, 556);
             this.ControlBox = false;
+            this.Controls.Add(this.FullscreenPanel);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -48,5 +60,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel FullscreenPanel;
     }
 }

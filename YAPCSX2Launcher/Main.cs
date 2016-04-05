@@ -81,16 +81,22 @@ namespace YAPCSX2Launcher
             {
                 listViewSwitch_Click(null, null);
                 this.objectListView1.View = View.Details;
-                //listManager.listViewModeDetailFill(this.gameListGridMode, games);
+                this.objectListView1.Visible = true;
+                this.GridViewPanel.Visible = false;
             }
             else if (configs.viewMode.ToLower() == "grid")
             {
                 pictureBox2_Click(null, null);
-                this.objectListView1.View = View.LargeIcon;
+                this.objectListView1.Visible = false;
+                this.GridViewPanel.Visible = true;
             }
             else if (configs.viewMode.ToLower() == "tv")
             {
                 pictureBox1_Click(null, null);
+                Form fullscreenForm = new FullScreenForm();
+                fullscreenForm.ShowDialog();
+                //this.objectListView1.Visible = false;
+                //this.GridViewPanel.Visible = false;
             }
         }
 
@@ -126,6 +132,8 @@ namespace YAPCSX2Launcher
             /* Swap to list view mode */
             //gameListGridMode.View = View.Details;
             this.objectListView1.View = View.Details;
+            this.objectListView1.Visible = true;
+            this.GridViewPanel.Visible = false;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -142,22 +150,31 @@ namespace YAPCSX2Launcher
 
             /* swap to grid view mode */
             //gameListGridMode.View = View.LargeIcon;
-            this.objectListView1.View = View.LargeIcon;
+            //this.objectListView1.View = View.LargeIcon;
+            this.objectListView1.Visible = false;
+            this.GridViewPanel.Visible = true;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            #region old code
             /* RECOVER FROM ASSEMBLY */
-            Assembly getImage;
+            /*Assembly getImage;
             getImage = Assembly.GetExecutingAssembly();
             Stream buttonImage = getImage.GetManifestResourceStream("YAPCSX2Launcher.Resources.list_view_n.png");
             Stream buttonImage2 = getImage.GetManifestResourceStream("YAPCSX2Launcher.Resources.grid_view_n.png");
             Stream buttonImage3 = getImage.GetManifestResourceStream("YAPCSX2Launcher.Resources.tv_icon_e.png");
             listViewSwitch.Image = new Bitmap(buttonImage);
             pictureBox2.Image = new Bitmap(buttonImage2);
-            pictureBox1.Image = new Bitmap(buttonImage3);
-
-            /* TODO: FULL SCREEN MODE */
+            pictureBox1.Image = new Bitmap(buttonImage3);*/
+            //this.objectListView1.Visible = false;
+            //this.GridViewPanel.Visible = false;
+            #endregion
+            Form fullscreenForm = new FullScreenForm();
+            Size formSize = Screen.FromControl(this).Bounds.Size;
+            //MessageBox.Show(formSize.Width + "x" + formSize.Height);
+            fullscreenForm.Size = formSize;
+            fullscreenForm.ShowDialog();
         }
 
         private static string foldersAndFiles(string dictionaryIndex)

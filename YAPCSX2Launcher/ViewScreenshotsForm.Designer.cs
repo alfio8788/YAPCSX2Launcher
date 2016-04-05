@@ -107,7 +107,7 @@
             this.ScreenshotMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.removeScreenshotToolStripMenuItem});
             this.ScreenshotMenu.Name = "ScreenshotMenu";
-            this.ScreenshotMenu.Size = new System.Drawing.Size(178, 48);
+            this.ScreenshotMenu.Size = new System.Drawing.Size(178, 26);
             // 
             // removeScreenshotToolStripMenuItem
             // 

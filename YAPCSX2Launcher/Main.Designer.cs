@@ -73,6 +73,7 @@
             this.viewScreenshotsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addScreenshotsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.GridViewPanel = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listViewSwitch)).BeginInit();
@@ -447,11 +448,20 @@
             this.removeGameToolStripMenuItem.Text = "&Remove Game";
             this.removeGameToolStripMenuItem.Click += new System.EventHandler(this.removeGameToolStripMenuItem_Click);
             // 
+            // GridViewPanel
+            // 
+            this.GridViewPanel.BackColor = System.Drawing.Color.White;
+            this.GridViewPanel.Location = new System.Drawing.Point(12, 53);
+            this.GridViewPanel.Name = "GridViewPanel";
+            this.GridViewPanel.Size = new System.Drawing.Size(965, 481);
+            this.GridViewPanel.TabIndex = 9;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(989, 546);
+            this.Controls.Add(this.GridViewPanel);
             this.Controls.Add(this.objectListView1);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.searchBox);
@@ -459,8 +469,11 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "YAPCSX2 Launcher";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -519,6 +532,7 @@
         private System.Windows.Forms.ToolStripMenuItem viewScreenshotsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addScreenshotsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem launchGameToolStripMenuItem;
+        private System.Windows.Forms.Panel GridViewPanel;
     }
 }
 

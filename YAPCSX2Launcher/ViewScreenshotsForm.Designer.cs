@@ -28,13 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.closeButtonImage = new System.Windows.Forms.PictureBox();
             this.olvColumnId = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumnSsId = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.panel1 = new System.Windows.Forms.Panel();
             this.bigScreenshotBox = new System.Windows.Forms.PictureBox();
+            this.ScreenshotMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.removeScreenshotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.closeButtonImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bigScreenshotBox)).BeginInit();
+            this.ScreenshotMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // closeButtonImage
@@ -98,6 +102,20 @@
             this.bigScreenshotBox.TabIndex = 0;
             this.bigScreenshotBox.TabStop = false;
             // 
+            // ScreenshotMenu
+            // 
+            this.ScreenshotMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.removeScreenshotToolStripMenuItem});
+            this.ScreenshotMenu.Name = "ScreenshotMenu";
+            this.ScreenshotMenu.Size = new System.Drawing.Size(178, 48);
+            // 
+            // removeScreenshotToolStripMenuItem
+            // 
+            this.removeScreenshotToolStripMenuItem.Name = "removeScreenshotToolStripMenuItem";
+            this.removeScreenshotToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.removeScreenshotToolStripMenuItem.Text = "&Remove screenshot";
+            this.removeScreenshotToolStripMenuItem.Click += new System.EventHandler(this.removeScreenshotToolStripMenuItem_Click);
+            // 
             // ViewScreenshotsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -118,6 +136,7 @@
             this.Text = "ViewScreenshotsForm";
             ((System.ComponentModel.ISupportInitialize)(this.closeButtonImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bigScreenshotBox)).EndInit();
+            this.ScreenshotMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -129,5 +148,7 @@
         private BrightIdeasSoftware.OLVColumn olvColumnSsId;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox bigScreenshotBox;
+        private System.Windows.Forms.ContextMenuStrip ScreenshotMenu;
+        private System.Windows.Forms.ToolStripMenuItem removeScreenshotToolStripMenuItem;
     }
 }

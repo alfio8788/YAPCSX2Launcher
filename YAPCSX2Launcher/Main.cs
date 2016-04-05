@@ -197,10 +197,8 @@ namespace YAPCSX2Launcher
         {
             if (e.Button == MouseButtons.Right)
             {
-                //MessageBox.Show("trigger of right click");
                 if (objectListView1.FocusedItem.Bounds.Contains(e.Location) == true)
                 {
-                    //MessageBox.Show("Selected Item: " + this.objectListView1.SelectedIndex.ToString());
                     gameEditMenu.Show(Cursor.Position);
                 }
             }
@@ -293,7 +291,16 @@ namespace YAPCSX2Launcher
             float formHeight = area.Height - screenHeightMod;
             Size size = new Size(int.Parse(Math.Round(formWidth, 0).ToString()), int.Parse(Math.Round(formHeight, 0).ToString()));
             screenshotsForm.Size = size;
-            screenshotsForm.ShowDialog();
+            try
+            {
+                screenshotsForm.ShowDialog();
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("No screenshots available, add them first", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
+
         }
 
         private void launchGameToolStripMenuItem_Click(object sender, EventArgs e)

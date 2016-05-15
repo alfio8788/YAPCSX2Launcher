@@ -33,6 +33,8 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
         public DataSet settingsDataSet = new DataSet();
         public DataTable gameSettingsDataTable = new DataTable();
         public DataSet gameSettingsDataSet = new DataSet();
+        public DataTable skinSettingsDataTable = new DataTable();
+        public DataSet skinSettingsDataSet = new DataSet();
         #endregion
         #region datatables and datasets clones
         /* And the clones */
@@ -44,6 +46,8 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
         //public DataSet settingsDataSetClone;
         //public DataTable gameSettingsDataTableClone;
         //public DataSet gameSettingsDataSetClone;
+        public DataTable skinSettingsDataTableClone;
+        //public DataSet skinSettingsDataSetClone;
         #endregion
         #region queries
         /* SQLite Queries: general */
@@ -61,17 +65,20 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
         private SQLiteCommand updateCoverQuery = new SQLiteCommand("UPDATE games set cover = @cover WHERE id = @id"); //updateGameCover (DONE)
         private SQLiteCommand getGameQuery = new SQLiteCommand("SELECT * FROM games WHERE id = @id"); //getGame (DONE)
         private SQLiteCommand firstRunQuery = new SQLiteCommand("UPDATE games SET timeplayed = 1 WHERE id = @gameid");
-        /* SQLite Queries: screenshots*/
+        /* SQLite Queries: screenshots */
         private SQLiteCommand addScreenshotQuery = new SQLiteCommand("INSERT INTO screenshots (gameid, screenshot) VALUES (@gameid,@screenshot)");//addScreenshot (DONE)
         private SQLiteCommand removeScreenshotQuery = new SQLiteCommand("DELETE FROM screenshots WHERE id = @screenshotid");//removeScreenShot (DONE)
         private SQLiteCommand removeAllScreenshotsQuery = new SQLiteCommand("DELETE FROM screenshots WHERE gameid = @gameid");//removeAllScreenshots (DONE)
         private SQLiteCommand getScreenshotsQuery = new SQLiteCommand("SELECT * FROM screenshots WHERE gameid = @gameid");//getGameScreenshots (DONE)
         private SQLiteCommand getSingleScreenshotQuery = new SQLiteCommand("SELECT * FROM screenshots WHERE id = @screenshotid");//getSingleScreenshot (DONE)
-        /* SQLite Queries: gamesconfigs*/
+        /* SQLite Queries: gamesconfigs */
         private SQLiteCommand getGameConfigsQuery = new SQLiteCommand("SELECT * FROM gamesconfigs WHERE gameid = @gameid");//getGameConfigs (DONE)
         private SQLiteCommand removeGameConfigsQuery = new SQLiteCommand("DELETE FROM gamesconfigs WHERE gameid = @gameid");//removeGameConfigs (DONE)
         private SQLiteCommand addGameConfigsQuery = new SQLiteCommand("INSERT INTO gamesconfigs (gameid, configfolder, bios, enableCheats, fromcd, disableHacks, fullboot, nogui, customexecutable, widescreensupport) VALUES (@gameid, @configfolder, @bios, @enablecheats, @fromcd, @disablehacks, @fullboot, @nogui, @customexecutable, @widescreensupport)");//addGameConfigs (DONE)
         private SQLiteCommand updateGameConfigsQuery = new SQLiteCommand("UPDATE gamesconfigs SET configfolder = @configfolder, bios = @bios, enablecheats = @enablecheats, fromcd = @fromcd, disablehacks = @disablehacks, fullboot = @fullboot, nogui = @nogui, customexecutable = @customexecutable, widescreensupport = @widescreensupport WHERE gameid = @gameid");//updateGameConfigs (DONE)
+        /* SQLite Queries: skins */
+        private SQLiteCommand getSkinQuery = new SQLiteCommand("SELECT * FROM skin WHERE id = 1");
+        private SQLiteCommand updateSkinQuery = new SQLiteCommand("UPDATE skin SET fullscreenbackgroundimage = @fullscreenbackgroundimage, mainscreenbackgroundimage = @mainscreenbackgroundimage, mainscreengridbackgroundimage = @mainscreengridbackgroundimage WHERE id = @skinid");
         /* SQLite Queries: Mixed tables Queries */
         //Needed? Probably not as of now
         #endregion
@@ -685,6 +692,54 @@ namespace YAPCSX2Launcher.Utilities.SQLManager
             try
             {
                 this.updateGameConfigsQuery.ExecuteNonQuery();
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+                status = false;
+            }
+            this.closeConnection();
+            return status;
+        }
+        #endregion
+        #region skin
+        public DataTable getSkin()
+        {
+            this.initConnection();
+            this.getSkinQuery.Prepare();
+            this.getSkinQuery.Connection = this.sqlConnection;
+            this.sqlDataAdapter = new SQLiteDataAdapter(this.getSkinQuery);
+            this.skinSettingsDataSet.Reset();
+            this.sqlDataAdapter.Fill(skinSettingsDataSet);
+            this.skinSettingsDataTable = skinSettingsDataSet.Tables[0];
+            this.skinSettingsDataTableClone = skinSettingsDataTable.Copy();
+            /* Close the connection before leaving */
+            this.sqlConnection.Close();
+            /* Get rid of the dataadapter as well */
+            this.sqlDataAdapter.Dispose();
+            return this.skinSettingsDataTable;
+        }
+
+        public bool updateSkin(Skin skinParams)
+        {
+            /*
+            @fullscreenbackgroundimage
+            @mainscreenbackgroundimage
+            @mainscreengridbackgroundimage
+            @skinid (1)
+            */
+            bool status = true;
+            this.initConnection();
+            this.updateSkinQuery.Prepare();
+            this.updateSkinQuery.Parameters.AddWithValue("@fullscreenbackgroundimage", skinParams.fullscreenbackgroundimage);
+            this.updateSkinQuery.Parameters.AddWithValue("@mainscreenbackgroundimage", skinParams.mainscreenbackgroundimage);
+            this.updateSkinQuery.Parameters.AddWithValue("@mainscreengridbackgroundimage", skinParams.mainscreengridbackgroundimage);
+            //this.updateSkinQuery.Parameters.AddWithValue("@splashscreenimage", skinParams.splashscreenimage);
+            this.updateSkinQuery.Parameters.AddWithValue("@skinid", 1);
+            this.updateSkinQuery.Connection = this.sqlConnection;
+            try
+            {
+                this.updateSkinQuery.ExecuteNonQuery();
             }
             catch (Exception Ex)
             {

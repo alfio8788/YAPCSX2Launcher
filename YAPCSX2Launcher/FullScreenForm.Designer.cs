@@ -55,6 +55,7 @@
             this.Text = "FullScreenForm";
             this.TopMost = true;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FullScreenForm_KeyDown);
             this.ResumeLayout(false);
 
         }

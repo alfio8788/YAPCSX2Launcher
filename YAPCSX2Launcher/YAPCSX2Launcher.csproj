@@ -159,11 +159,17 @@
       <DependentUpon>SetupWizardForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SingleInstanceMutex.cs" />
-    <Compile Include="SplashForm.cs">
+    <Compile Include="SkinEditorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SplashForm.Designer.cs">
-      <DependentUpon>SplashForm.cs</DependentUpon>
+    <Compile Include="SkinEditorForm.Designer.cs">
+      <DependentUpon>SkinEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SkinPreviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SkinPreviewForm.Designer.cs">
+      <DependentUpon>SkinPreviewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SQLManager.cs" />
     <Compile Include="UpdateManager.cs" />
@@ -214,8 +220,11 @@
     <EmbeddedResource Include="SetupWizardForm.resx">
       <DependentUpon>SetupWizardForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SplashForm.resx">
-      <DependentUpon>SplashForm.cs</DependentUpon>
+    <EmbeddedResource Include="SkinEditorForm.resx">
+      <DependentUpon>SkinEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SkinPreviewForm.resx">
+      <DependentUpon>SkinPreviewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewScreenshotsForm.resx">
       <DependentUpon>ViewScreenshotsForm.cs</DependentUpon>

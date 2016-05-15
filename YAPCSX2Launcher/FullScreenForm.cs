@@ -16,10 +16,10 @@ namespace YAPCSX2Launcher
     public partial class FullScreenForm : Form
     {
         private Size formSize;
-        private int gameLine = 0;
+        //private int gameLine = 0;
         private int gameColumn = 0;
-        private int spacer = 40;
-        private int selectedGame;
+        //private int spacer = 40;
+        //private int selectedGame;
         private int wInitPoint = 40;
         private int hInitPoint = 70;
         private float coverProportion = 1.55F;
@@ -67,6 +67,14 @@ namespace YAPCSX2Launcher
         private void renderHelper()
         {
 
+        }
+
+        private void FullScreenForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
         }
     }
 }

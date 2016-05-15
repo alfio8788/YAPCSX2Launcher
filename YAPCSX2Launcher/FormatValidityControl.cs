@@ -14,8 +14,7 @@ namespace YAPCSX2Launcher.Utilities.Formats
         {
             try
             {
-                using (Image newImage = Image.FromFile(file))
-                { }
+                using (Image newImage = Image.FromFile(file)){}
             }
             //catch (OutOfMemoryException Ex)
             catch (Exception Ex)

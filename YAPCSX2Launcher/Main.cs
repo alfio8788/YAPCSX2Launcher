@@ -37,7 +37,7 @@ namespace YAPCSX2Launcher
             }*/
             #endregion
             InitializeComponent();
-            #region first run or splash
+            #region first run
             //First Launch? No problem we will solve this with a configuration wizard, else? Simply show the main window
             string dbfile = foldersAndFiles("dbfile");
             //COMMENT THE IF CONDITION TO SHOW THE WIZARD SETUP FOR DEBUG EVEN AFTER THE SOFTWARE ALREADY CREATED IT'S FIRST CONFIG
@@ -46,12 +46,7 @@ namespace YAPCSX2Launcher
                 MessageBox.Show("This is the first time you are running this application, we will now show you a setup wizard to help you configure this application", "First Launch", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Form wizardForm = new SetupWizardForm();
                 wizardForm.ShowDialog();
-            } //Let's speed things up for now TODO: Uncomment when done (probably to remove)
-              /*else
-              {
-                  Form splashScreen = new SplashForm();
-                  splashScreen.ShowDialog();
-              }*/
+            }
             #endregion
             /* Get the settings */
             Configs configs = new Configs().getSettings();
@@ -383,6 +378,12 @@ namespace YAPCSX2Launcher
                 //MessageBox.Show("Emulator was open for: " + secondsPlayed.ToString() + " Seconds");
                 game.updatePlaytime(gameId, secondsPlayed);
             }
+        }
+
+        private void skinToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form skinEditForm = new SkinEditorForm();
+            skinEditForm.ShowDialog();
         }
     }
 }

@@ -74,6 +74,7 @@
             this.addScreenshotsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GridViewPanel = new System.Windows.Forms.Panel();
+            this.skinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listViewSwitch)).BeginInit();
@@ -187,7 +188,8 @@
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.settingsToolStripMenuItem2});
+            this.settingsToolStripMenuItem2,
+            this.skinToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "Edit";
@@ -195,7 +197,7 @@
             // settingsToolStripMenuItem2
             // 
             this.settingsToolStripMenuItem2.Name = "settingsToolStripMenuItem2";
-            this.settingsToolStripMenuItem2.Size = new System.Drawing.Size(116, 22);
+            this.settingsToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
             this.settingsToolStripMenuItem2.Text = "Settings";
             this.settingsToolStripMenuItem2.Click += new System.EventHandler(this.settingsToolStripMenuItem2_Click);
             // 
@@ -456,6 +458,13 @@
             this.GridViewPanel.Size = new System.Drawing.Size(965, 481);
             this.GridViewPanel.TabIndex = 9;
             // 
+            // skinToolStripMenuItem
+            // 
+            this.skinToolStripMenuItem.Name = "skinToolStripMenuItem";
+            this.skinToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.skinToolStripMenuItem.Text = "Skin";
+            this.skinToolStripMenuItem.Click += new System.EventHandler(this.skinToolStripMenuItem_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -533,6 +542,7 @@
         private System.Windows.Forms.ToolStripMenuItem addScreenshotsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem launchGameToolStripMenuItem;
         private System.Windows.Forms.Panel GridViewPanel;
+        private System.Windows.Forms.ToolStripMenuItem skinToolStripMenuItem;
     }
 }
 
